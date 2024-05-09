@@ -1,0 +1,22 @@
+.attend-form {
+    --ocerlap-top: 3rem;
+
+    background: var(--white);
+    min-width: 300px;
+    max-width: calc(640px - 3rem);
+    margin: 0 auto;
+    min-height: 500px;
+    padding: 3rem;
+    padding-top: var(--ocerlap-top);
+    position: relative;
+    top: calc((var(--ocerlap-top) * -1) - 1.5rem);
+    border-radius: 5px;
+
+    &__content {
+        color: var(--text-dark);
+
+        h2 {
+            text-align: center;
+        }
+    }
+}
