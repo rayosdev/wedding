@@ -1,6 +1,12 @@
 #root {
 
+  position: relative;
+  z-index: -4;
+}
 
+body {
+  position: relative;
+  z-index: -5;
 }
 
 /* .logo {

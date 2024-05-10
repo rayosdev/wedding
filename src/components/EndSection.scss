@@ -1,0 +1,32 @@
+.end {
+    width: 100%;
+    min-height: 800px;
+    background-color: var(--white);
+    color: var(--text-dark);
+    padding-top: 8rem;
+
+    .container {
+        h2 {
+            margin: 0 auto;
+            text-align: center;
+            max-width: 25ch;
+        }
+    }
+
+    &__image-wrapper {
+        position: relative;
+
+        & > img {
+            position: absolute;
+        }
+
+        &_container {
+            padding-top: 12rem;
+            width: 100%;
+            
+            & > img {
+                width: 50%;
+            }
+        }
+    }
+}

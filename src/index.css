@@ -11,7 +11,8 @@
 
   /* Color */
   --deep-green: #515D3C;
-  --white: #f1f1f1;
+  /* --white: #f1f1f1; */
+  --white: #ffffff;
   --text-dark: #060D17;
 
 
@@ -60,6 +61,11 @@ h1 {
 }
 h2 {
   font-size: 42px;
+}
+
+.no-pointer-event {
+  pointer-events: none;
+  user-select: none;
 }
 
 /* button {
