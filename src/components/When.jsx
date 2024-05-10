@@ -17,14 +17,14 @@ export default function When() {
     const firstRender = useRef(false)
     const [countdownString, setCountdownString] = useState("")
     const imageSequence = [JJ01Image, JJ02Image, JJ03Image, JJ04Image, JJ05Image]
+    
+    const dateInterval = useRef(null)
 
     useEffect(() => {
-        if(firstRender.current == false){ 
-            firstRender.current = true
-            return 
+        if(dateInterval.current == null){ 
+            console.log("test__")
+            dateInterval.current = setInterval(() => setCountdownString(updateCountdown()), 1000)
         }
-        console.log("test__")
-        setInterval(() => setCountdownString(updateCountdown()), 1000)
     }, [])
     
     useEffect(() => {
