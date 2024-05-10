@@ -34,17 +34,18 @@ export default function PersonFormStep() {
     const handelChange = (e) => {
         if(e.target.value.includes("yes")) userAttendance.value = true
         else userAttendance.value = false
-        setShowNameAndEmail(userAttendance.value)
+        setShowNameAndEmail(true)
     }
     
     const handelUserInfo = (e) => {
         const felid = e.target.value
-        console.log("test-_", felid.type)
         if(felid.value != ""){
             if(felid.type == 'name') userName.value = felid.value
             else if(felid.type == 'name') userEmail.value = felid.value
-
-        }  
+        }
+        if (userName.value != "" && userEmail.value != ""){
+            setShowGroupStatus(true)
+        }
     }
 
 
@@ -56,26 +57,22 @@ export default function PersonFormStep() {
                     handelChange={handelChange} 
                 />
             </div>
-            {showNameAndEmail &&
-                <div className="person-info">
-                    <FormInput 
-                        type="text" 
-                        name="user:name" 
-                        label="Name"
-                        autocomplete="name"
-                        onChange={handelUserInfo}
-                        value={userName}
-                        />
-                    <FormInput 
-                        type="email" 
-                        name="user:emails" 
-                        label="Email"
-                        autocomplete="email"
-                        onChange={handelUserInfo}
-                        value={userEmail}
+            <div className="person-info" style={showNameAndEmail ? {} : {display: 'none'}}>
+                <FormInput 
+                    type="text" 
+                    name="user:name" 
+                    label="Name"
+                    autocomplete="name"
+                    onChange={handelUserInfo}
                     />
-                </div>
-            }
+                <FormInput 
+                    type="email" 
+                    name="user:emails" 
+                    label="Email"
+                    autocomplete="email"
+                    onChange={handelUserInfo}
+                />
+            </div>
         </>
     )
 }

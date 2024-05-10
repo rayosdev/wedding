@@ -5,7 +5,7 @@ export default function FormInput(props) {
 
     const {type, name, label, autocomplete, value, onChange} = {...props}
 
-    let pattern = type == 'email' ? '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$' : null
+    let pattern = type == 'email' ? "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" : null
 
     return (
         <div className='form-input'>
@@ -16,7 +16,6 @@ export default function FormInput(props) {
                 autoComplete={autocomplete}
                 pattern={pattern ? pattern : ''}
                 onChange={onChange}
-                value={value.value ? value.value : ''}
             />
         </div>
     )

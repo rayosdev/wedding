@@ -1,0 +1,77 @@
+.when {
+    width: 100%;
+    min-height: 800px;
+    background-color: var(--deep-green);
+    position: relative;
+    display: grid;
+
+    .container {
+        text-align: center;
+        margin-bottom: 20rem;
+
+        h2 {
+            margin-bottom: -1rem;
+        }
+
+        p {
+            font-family: 'Barlow';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 25px;
+            line-height: 30px;
+        }
+
+        h3 {
+            font-family: 'Sedan SC';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 48px;
+            line-height: 66px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+    }
+
+    &__background-decoration {
+        
+        position: absolute;
+        top: 30px;
+        // margin-top: -350px;
+        // margin-bottom: -400px;
+        overflow: hidden;
+        
+        &_image {
+
+        }
+    }
+
+    &__bottom-image-sequence {
+        display: grid;
+        grid-auto-flow: column;
+        position: relative;
+        z-index: 2;
+        max-width: 100%;
+        overflow: hidden;
+        align-self: end;
+
+        &_wrapper:nth-child(5), 
+        &_wrapper:nth-child(4) {
+            display: none;
+        }
+
+        &_wrapper {
+            overflow: hidden;
+            width: 100%;
+            max-height: 300px;
+            
+            img {
+                width: 100%;
+            
+            }
+
+            @media (min-width: 1440px) {
+                
+            }
+        }
+    }
+}
