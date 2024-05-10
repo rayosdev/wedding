@@ -4,6 +4,9 @@ export function updateCountdown() {
 	const now = new Date()
 	const diff = targetDate - now
 
+	console.log("test now", now)
+	console.log("test targetDate", targetDate)
+
 	let output = ""
 	if (diff > 7 * 24 * 60 * 60 * 1000) {
 		// More than 7 days left
@@ -34,6 +37,8 @@ export function updateCountdown() {
 			minutes !== 1 ? "s" : ""
 		} | ${seconds} Second${seconds !== 1 ? "s" : ""} |`
 	}
+
+	console.log("output: ", output)
 
 	return output
 }

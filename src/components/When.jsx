@@ -15,7 +15,7 @@ import { updateCountdown } from '../utils'
 export default function When() {
 
     const firstRender = useRef(false)
-    const [countdownString, setCountdownString] = useState()
+    const [countdownString, setCountdownString] = useState("")
     const imageSequence = [JJ01Image, JJ02Image, JJ03Image, JJ04Image, JJ05Image]
 
     useEffect(() => {
@@ -23,8 +23,14 @@ export default function When() {
             firstRender.current = true
             return 
         }
+        console.log("test__")
         setInterval(() => setCountdownString(updateCountdown()), 1000)
     }, [])
+    
+    useEffect(() => {
+        console.log("test__2", countdownString)
+    }, [countdownString])
+    
 
     return (
         <section className="when">
