@@ -1,0 +1,8 @@
+@import '_layouts';
+
+:root {
+    
+    @include tablet {
+        font-size: 14px;
+    }
+}

@@ -12,7 +12,7 @@ function Header(props) {
                     <span>Jared & Jeannine</span>    
                     <span>Wedding Party</span>
                     <hr />
-                    <span className="header__dafe">August 3<sub>rd</sub></span>
+                    <span>August 3<sub>rd</sub></span>
                 </h1>
               </div>
             </div>

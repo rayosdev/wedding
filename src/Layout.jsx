@@ -7,6 +7,8 @@ import Where from './components/Where'
 import EndSection from './components/EndSection'
 import Footer from './components/Footer'
 
+import './Layout.scss'
+
 function Layout(props) {
   return (
     <>
