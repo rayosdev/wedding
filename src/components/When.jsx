@@ -22,13 +22,11 @@ export default function When() {
 
     useEffect(() => {
         if(dateInterval.current == null){ 
-            console.log("test__")
             dateInterval.current = setInterval(() => setCountdownString(updateCountdown()), 1000)
         }
     }, [])
     
     useEffect(() => {
-        console.log("test__2", countdownString)
     }, [countdownString])
     
 
