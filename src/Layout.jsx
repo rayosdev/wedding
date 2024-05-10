@@ -5,6 +5,7 @@ import Attend from './components/Attend'
 import When from './components/When'
 import Where from './components/Where'
 import EndSection from './components/EndSection'
+import Footer from './components/Footer'
 
 function Layout(props) {
   return (
@@ -14,6 +15,7 @@ function Layout(props) {
       <When />
       <Where />
       <EndSection />
+      <Footer />
     </>
   )
 }
