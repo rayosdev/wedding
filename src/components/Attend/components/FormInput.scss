@@ -1,0 +1,24 @@
+.form-input {
+
+    display: grid;
+    grid-template-columns: min-content 50px auto;
+    font-size: 20px;
+    margin-bottom: 2rem;
+    
+    label {
+        
+    }
+    input {
+        grid-column: 3/4;
+        font-size: 20px;
+        font-weight: 400;
+        background: none;
+        border: none;
+        border-bottom: solid 2px var(--text-dark);
+        padding: 0.5rem;
+        max-width: 420px;
+        outline: none;
+        color: var(--text-dark);
+        line-height: 1.8;
+    }
+}

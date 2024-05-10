@@ -23,7 +23,7 @@ const defaultProps = {
 
 export default function RadioGroup(props) {
 
-    const { legendText, legendTextHidden, inputsName, buttons, handelClick } = { ...defaultProps, ...props }
+    const { legendText, legendTextHidden, inputsName, buttons, handelChange } = { ...defaultProps, ...props }
         
     return (
         <fieldset className="radio-group">
@@ -39,7 +39,7 @@ export default function RadioGroup(props) {
                             type="radio" 
                             name={inputsName} 
                             value={button.inputValue}
-                            onClick={handelClick} 
+                            onChange={handelChange} 
                         />
                         <span>{button.labelText}</span>
                     </label>
