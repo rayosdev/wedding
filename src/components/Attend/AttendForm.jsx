@@ -11,7 +11,7 @@ export default function AttendForm() {
             <h2>Will you attend?</h2>
             <p>Please let us know</p>
             <PersonFormStep />
-            <img src={branchWingsDecor} alt="" srcSet="" />
+            <img src={branchWingsDecor} alt="" />
           </div>
         </form>
     </>

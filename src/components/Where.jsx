@@ -49,7 +49,7 @@ export default function Where() {
                             </div>
                         </div>
                     </div>
-                    <img src={pappaSrc} alt="" srcset="" className="no-pointer-event" />
+                    <img src={pappaSrc} alt="" className="no-pointer-event" />
                 </div>
             </div>
             <div className="where__decoration-branch">

@@ -42,11 +42,11 @@ export default function When() {
                 <p>... left until the party starts!</p>
             </div>
             <div className="when__background-decoration">
-                <img className="when__background-decoration_image no-pointer-event" src={decorationSVG} alt="" srcset="" />
+                <img className="when__background-decoration_image no-pointer-event" src={decorationSVG} alt="" />
             </div>
             <div className="when__bottom-image-sequence">
                 {imageSequence.map(imgSrc => (
-                    <div className="when__bottom-image-sequence_wrapper no-pointer-event">
+                    <div key={imgSrc} className="when__bottom-image-sequence_wrapper no-pointer-event">
                         <img src={imgSrc} alt="" />
                     </div>
                 ))}
