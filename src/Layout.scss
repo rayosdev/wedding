@@ -1,8 +1,8 @@
 @import '_layouts';
 
 :root {
+    font-size: 16px;
     
     @include tablet {
-        font-size: 14px;
     }
 }

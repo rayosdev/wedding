@@ -9,7 +9,8 @@ export default function AttendForm() {
         <form className='attend-form'>
           <div className="attend-form__content">
             <h2>Will you attend?</h2>
-            <p>Please let us know</p>
+          <p>We have limited space so let us know by signing up until June 2nd
+            so we can plan accordingly</p>
             <PersonFormStep />
             <img src={branchWingsDecor} alt="" />
           </div>

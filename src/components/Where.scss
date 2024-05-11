@@ -13,7 +13,7 @@
 
     &__text-content {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: minmax(260px, 1fr) 10vw minmax(300px, 485px) 1fr;
         column-gap: 5%;
         padding-bottom: 20rem;
         
@@ -26,42 +26,24 @@
             justify-content: center;
             padding: inherit 6rem ;
         }
-        
-        & > img {
-            height: 100%;
-            
-            @media (max-width: 1463px) {
-                grid-row: 2/3;
-                grid-column: 2/3;
-                align-self: start;
-                justify-self: end;
-                min-width: 200px;
-                position: relative;
-                top: -3rem;
-            }
-            
-            @media (max-width: 1076px) {
-                top: -5rem;
-            }
-            
-            @media (max-width: 900px) {
-                top: -16vw;
-            }
-            
-            @media (max-width: 850px) {
-                grid-row: 3/4;
-                grid-column: 1/2;
-                top: 0;
-                align-self: center;
-            }
-            // @include laptop {
-            //     height: auto;
-            //     width: 100%;
-            // }
+
+        & > p {
+            max-width: 260px;
         }
+        
     }
 
     .content {
+
+        grid-column: 3/4;
+        max-width: 485px;
+
+        display: grid;
+        grid-template-columns: 140px auto;
+        grid-template-rows: 4.5rem 4.5rem;
+        column-gap: 1rem;
+        
+
         @media (max-width: 1463px) {
             grid-row: 1/2;
             grid-column: 2/3;
@@ -78,9 +60,60 @@
             margin-bottom: 1.5rem;
 
 
-            @media only screen and (max-width: 350px) {
+        @media only screen and (max-width: 350px) {
                 font-size: 14px;
             }
+        }
+
+        &__pappa-contact {
+            grid-column: 1/2;
+            grid-row: 1/3;
+
+            & > img {
+                width: 100%;
+                border-radius: 50%;
+            }
+            
+            // @media (max-width: 1463px) {
+            //     grid-row: 2/3;
+            //     grid-column: 2/3;
+            //     align-self: start;
+            //     justify-self: end;
+            //     min-width: 200px;
+            //     position: relative;
+            //     top: -3rem;
+            // }
+            
+            // @media (max-width: 1076px) {
+            //     top: -5rem;
+            // }
+            
+            // @media (max-width: 900px) {
+            //     top: -16vw;
+            // }
+            
+            // @media (max-width: 850px) {
+            //     grid-row: 3/4;
+            //     grid-column: 1/2;
+            //     top: 0;
+            //     align-self: center;
+            // }
+            // @include laptop {
+            //     height: auto;
+            //     width: 100%;
+            // }
+        }
+
+        &__top-text {
+            grid-column: 2/3;
+            grid-row: 1/2;
+            margin: 0;
+
+        }
+        
+        &__item-container {
+            grid-column: 2/3;
+            grid-row: 2/3;
         }
         
         .item {
@@ -91,7 +124,7 @@
             column-gap: 0.4rem;
             align-items: center;
             justify-content: center;
-            margin-bottom: 0.5rem;
+            // margin-bottom: 0.5rem;
             font-style: italic;
             width: 100%;
             height: 30px;
@@ -105,6 +138,7 @@
 
             p {
                 width: max-content;
+                margin: 0;
             }
             
             a {
