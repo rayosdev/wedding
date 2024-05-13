@@ -9,7 +9,8 @@
     padding: 3rem;
     padding-top: var(--ocerlap-top);
     position: relative;
-    top: calc((var(--ocerlap-top) * -1) - 1.5rem);
+    // top: calc((var(--ocerlap-top) * -1) - 1.5rem);
+    top: 4rem;
     border-radius: 5px;
     
     &__content {
@@ -37,6 +38,7 @@
             align-self: end;
             margin-bottom: -1rem;
             margin-top: 2rem;
+            display: none;
         }
     }
 }
