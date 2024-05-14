@@ -73,11 +73,6 @@ export default function PersonFormStep() {
                     onChange={handelUserInfo}
                 />
 
-                <br/><a target="_blank" href="twint://recipient=0797977686">Pay with TWINT</a>
-                <br/><a target="_blank" href="https://qr.vipps.no/28/2/01/031/4799229116?v=1">Use Vipps</a>
-                <br/><a target="_blank" href="https://paypal.me/jaredisaksen?country.x=NO&locale.x=no_NO">Use PayPal</a>
-
-
             </div>
         </>
     )
