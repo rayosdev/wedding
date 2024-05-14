@@ -9,7 +9,7 @@ export default function EndSection() {
     return (
         <section className="end">
             <div className="container">
-                <h2>“We’re looking forward to party with you”</h2>
+                <h2>“We’re looking forward to celebrate with you”</h2>
             </div>
             <div className="end__image-wrapper">
                 <img src={branchSrc} alt="" className="no-pointer-event" />

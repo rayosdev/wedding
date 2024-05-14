@@ -12,6 +12,7 @@
     // top: calc((var(--ocerlap-top) * -1) - 1.5rem);
     top: 4rem;
     border-radius: 5px;
+    z-index: 1;
     
     &__content {
         display: grid;
@@ -39,6 +40,32 @@
             margin-bottom: -1rem;
             margin-top: 2rem;
             display: none;
+        }
+    }
+
+    &--wrapper {
+        position: relative;
+    }
+    
+    &__branch {
+        
+        
+        &--right,
+        &--left {
+            position: absolute;
+            top: -5rem;
+            rotate: 10deg;
+            z-index: 0;
+        }
+
+
+        &--right {
+            right: -2rem;
+            
+        }
+        &--left {
+            left: -10rem;
+            rotate: 20deg;
         }
     }
 }
