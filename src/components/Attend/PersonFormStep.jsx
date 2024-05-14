@@ -4,6 +4,7 @@ import './PersonFormStep.scss'
 
 import { userAttendance, userEmail, userName } from '../../store'
 import FormInput from './components/FormInput'
+import GiftsFormStep from './GiftsFormStep'
 
 const radioGroupProps = {
     legendText: "Your attendance status",
@@ -72,7 +73,7 @@ export default function PersonFormStep() {
                     autocomplete="email"
                     onChange={handelUserInfo}
                 />
-
+                {/* <GiftsFormStep /> */}
             </div>
         </>
     )
