@@ -2,9 +2,8 @@ import React, { useState } from 'react'
 import RadioGroup from './components/RadioGroup'
 import './PersonFormStep.scss'
 
-import { userAttendance, userEmail, userName } from '../../store'
+import { _userAttendance, _userEmail, _userName } from '../../store'
 import FormInput from './components/FormInput'
-import GiftsFormStep from './GiftsFormStep'
 
 const radioGroupProps = {
     legendText: "Your attendance status",
@@ -33,18 +32,19 @@ export default function PersonFormStep() {
     const [showGroupStatus, setShowGroupStatus] = useState(false)
 
     const handelChange = (e) => {
-        if(e.target.value.includes("yes")) userAttendance.value = true
-        else userAttendance.value = false
+        if(e.target.value.includes("yes")) _userAttendance.value = true
+        else _userAttendance.value = false
         setShowNameAndEmail(true)
     }
     
     const handelUserInfo = (e) => {
+        return
         const felid = e.target.value
         if(felid.value != ""){
-            if(felid.type == 'name') userName.value = felid.value
-            else if(felid.type == 'name') userEmail.value = felid.value
+            if(felid.type == 'name') _userName.value = felid.value
+            else if(felid.type == 'email') _userEmail.value = felid.value
         }
-        if (userName.value != "" && userEmail.value != ""){
+        if (_userName.value != "" && _userEmail.value != ""){
             setShowGroupStatus(true)
         }
     }
@@ -66,15 +66,16 @@ export default function PersonFormStep() {
                     autocomplete="name"
                     onChange={handelUserInfo}
                 />
-                    <FormInput 
+                <FormInput 
                     type="email" 
                     name="user:emails" 
                     label="Email"
                     autocomplete="email"
                     onChange={handelUserInfo}
                 />
-                {/* <GiftsFormStep /> */}
             </div>
         </>
     )
 }
+
+
