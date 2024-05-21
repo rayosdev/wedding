@@ -221,7 +221,7 @@ export default function PersonFormStep() {
                 <div className="gift__services">
                     <a target="_blank" href="twint://recipient=0797977686">
                         <img src={LogoTwint} alt="" />
-                        <span>Pay with TWINT</span>
+                        <span>Use TWINT</span>
                     </a>
                     <a target="_blank" href="https://qr.vipps.no/28/2/01/031/4799229116?v=1">
                         <img src={LogoVipps} alt="" />

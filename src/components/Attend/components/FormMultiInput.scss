@@ -65,7 +65,10 @@
             li {
                 display: grid;
                 grid-auto-flow: column;
-                column-gap: 3rem;
+                // column-gap: 1.5rem;
+                grid-template-columns: 1.25fr 1fr 40px;
+                padding: 0;
+                margin: 0 2rem;
                 
                 @media (max-width: 860px) {
                     grid-auto-flow: row;
@@ -96,11 +99,12 @@
                     border-bottom: solid 2px var(--text-dark);
                     height: fit-content;
                     padding: 0.5rem;
-                    margin-right: 3.25rem;
+                    // margin-right: 3.25rem;
                     line-height: 1.8;
                     display: block;
                     position: relative;
                     text-align: center;
+                    justify-self: end;
                     
                     color: var(--text-dark);
                     appearance: none; // Remove the default arrow
@@ -158,7 +162,7 @@
         padding: 1rem;
         border-radius: 50%;
         position: absolute;
-        right: 3rem;
+        right: 0.25rem;
         top: 4px;
         aspect-ratio: 1/1;
         
