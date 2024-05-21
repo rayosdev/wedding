@@ -1,0 +1,109 @@
+.form-multi-input {
+
+    margin: 0 2rem;
+    margin-bottom: 4rem;
+    border: 0.5px solid #000;
+
+    legend {
+        text-align: center;
+        padding: 1rem 3rem;
+        font-size: 1.25rem;
+        color: var(--text-dark);
+        max-width: 65%;
+    }
+
+    ul {
+
+        max-height: 200px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        
+        &::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        &::-webkit-scrollbar-track {
+        background: #d4d4d4; 
+        }
+        
+        &::-webkit-scrollbar-thumb {
+        background: #888; 
+        }
+        
+        &::-webkit-scrollbar-thumb:hover {
+        background: #2c2c2c; 
+        }
+
+        li {
+
+            position: relative;
+            
+            .form-input {
+                grid-template-columns: 1fr;
+                
+                label {
+                    display: none;
+                }
+                
+                input {
+                    grid-column: 1 / 2;
+                    width: 100%;
+                    margin: 0 auto;
+                }
+            }
+
+        }
+    }
+
+    button {
+        background: none;
+        color: var(--text-dark);
+        border: none;
+        cursor: pointer;
+    }
+    
+    & &__remove-button {
+
+        background: var(--gray-light);
+        padding: 1rem;
+        border-radius: 50%;
+        position: absolute;
+        right: 3rem;
+        top: 4px;
+        aspect-ratio: 1/1;
+        
+        &:focus {
+            outline: solid color-mix(in srgb, var(--text-dark) 25%, white) 1px;
+        }
+
+        &:after {
+            content: "";
+            display: block;
+            border-top: solid var(--text-dark) 1px;
+            width: 10px;
+            height: 1px;
+        } 
+    }
+
+    &__add-button {
+        display: grid;
+        justify-items: center;
+        font-size: 0.875rem;
+        padding: 1rem;
+        margin-left: auto;
+        margin-right: 0.75rem;
+
+        &:focus {
+            outline: solid color-mix(in srgb, var(--text-dark) 25%, white) 1px;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        img {
+            padding-bottom: 0.5rem;
+        }
+    }
+}

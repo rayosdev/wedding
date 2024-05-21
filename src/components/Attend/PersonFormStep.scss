@@ -7,3 +7,13 @@
     // max-width: ;
 }
 
+.alone-or-group {
+    margin-bottom: 2.5rem;
+
+    .radio-group {
+        legend {
+            text-align: center;
+            padding-top: 3rem;
+        }
+    }
+}

@@ -29,6 +29,12 @@
         &:focus {
             outline: none;
         }
+        &:active, 
+        &:target 
+        
+        {
+            outline: solid 1px black !important;
+        }
     }
     
     ul {

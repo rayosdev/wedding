@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: min-content 50px auto;
     font-size: 20px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.8rem;
     
     label {
         
@@ -20,5 +20,17 @@
         outline: none;
         color: var(--text-dark);
         line-height: 1.8;
+
     }
+}
+
+body input:autofill,
+body input:-webkit-autofill {
+    background-color: rgba(70, 90, 126, 0.4) !important;
+    color: #fff !important;
+    box-sizing: border-box;
+    border: -30px solid darkorange;
+    background-color: rgb(17, 198, 147) !important;
+    background-image: none !important;
+    color: -internal-light-dark(rgb(147, 54, 54), white) !important;
 }
