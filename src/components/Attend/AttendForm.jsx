@@ -50,16 +50,37 @@ export default function AttendForm() {
       <div className="attend-form--wrapper">
         <form className="attend-form" onSubmit={handelSubmit}>
           <div className="attend-form__content">
-            <h2>Will you attend?</h2>
+            {_activeFormStep == 'you' && 
+              <h2>Will you attend?</h2>
+            }
+            {_activeFormStep == 'group' && 
+              <h2>Yes, I’m attending</h2>
+            }
             {(_activeFormStep == 'you' || _activeFormStep == 'group') && 
               <p>
                 We have limited space, so please let us know by signing up before June 2nd so we can plan accordingly
               </p>
             }
+            {_activeFormStep == 'food' && 
+              <h2>Glorious food</h2>
+            }
             {(_activeFormStep == 'food') && 
               <p>
                 We will have a Potluck (a buffet where guests bring foods) Would you like to contribute?
               </p>
+            }
+            {(_activeFormStep == 'program') &&
+              <>
+                <h2>Add to the program</h2>
+                <p>
+                  Do you want to join in and entertain us <br/>e.g with a speech, a music number etc.?
+                </p>
+              </> 
+            }
+            {(_activeFormStep == 'gift') &&
+              <>
+                <h2>Wanna surprise us with a gift?</h2>
+              </> 
             }
             <PersonFormStep />
             <FormNavbar />

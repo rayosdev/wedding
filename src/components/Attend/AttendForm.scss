@@ -15,6 +15,10 @@
     z-index: 1;
     display: grid;
     grid-template-rows: 1fr;
+
+    @media (min-width: 860px) {
+        padding: 2rem;
+    }
     
     &__content {
         display: grid;
@@ -64,16 +68,18 @@
             position: absolute;
             rotate: 10deg;
             z-index: 0;
+            display: inline;
         }
         
         
         &--right {
-            right: -7rem;
-            top: -8.5rem;
+            right: -21rem;
+            top: 3.5rem;
+            rotate: -141deg;
         }
         &--left {
             top: -5.5rem;
-            left: -20rem;
+            left: -10rem;
             rotate: -5deg;
         }
     }

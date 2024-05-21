@@ -14,6 +14,7 @@
   /* --white: #f1f1f1; */
   --white: #ffffff;
   --text-dark: #060D17;
+  --text-gray: #b2b2b2;
 
   --gray-light: #efefef;
   --gray: #5C5C5C;
@@ -73,6 +74,10 @@ h2 {
 ul {
   padding: 0;
   list-style: none;
+}
+
+input::placeholder {
+  color: var(--text-gray);
 }
 
 .no-pointer-event {

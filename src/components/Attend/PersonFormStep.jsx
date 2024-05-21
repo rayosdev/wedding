@@ -7,6 +7,12 @@ import { useStore } from '../../store'
 import FormInput from './components/FormInput'
 import FormMultiInput from './components/FormMultiInput'
 
+import GiftImage from '../../assets/gift-image.jpg'
+
+import LogoTwint from '../../assets/logo-twint.jpg'
+import LogoVipps from '../../assets/logo-vipps.jpg'
+import LogoPaypal from '../../assets/logo-paypal.jpg'
+
 const radioGroupProps = {
     legendText: "Your attendance status",
     legendTextHidden: true,
@@ -29,7 +35,7 @@ const radioGroupProps = {
 
 const radioGroupAloneOrGroup = {
     legendText: "Guests attending with you?",
-    legendTextHidden: false,
+    legendTextHidden: true,
     inputsName: "is-alone-or-group",
     buttons: [
         {
@@ -176,13 +182,57 @@ export default function PersonFormStep() {
                 />
                 <FormMultiInput 
                     type="text" 
-                    name="food:items" 
+                    name="prefrence:items" 
                     label=""
                     placeholder="e.g: nuts, milk, vegetarian"
                     legendText="There are food allergies or preferences we should be aware of"
                     addButtonText="add item"
                     onChange={e => console.log("test:::")}
                 />
+            </div>
+            <div 
+                className="attend-form--section-program"
+                style={['program'].includes(_activeFormStep) ? {} : {display: 'none'}}
+            >
+                <FormMultiInput 
+                    type="text" 
+                    name="program:items" 
+                    label=""
+                    placeholder="program item"
+                    legendText="Yes, count me in!"
+                    addButtonText="add item"
+                    sideMenuPlaceholder="preferred time"
+                    sideMenu={["no preference", 'at start', 'at middle', 'at end']}
+                    onChange={e => console.log("test:::")}
+                />
+            </div>
+            <div 
+                className="gift gift__container"
+                style={['gift'].includes(_activeFormStep) ? {} : {display: 'none'}}
+            >
+                <img src={GiftImage} alt="" />
+                <p>
+                    Your presence at our wedding party is gift enough!
+                    But if you wish to give something, a contribution to
+                    our future would mean a lot to us.
+                </p>
+
+                <p>You could use one of the following services</p>
+                <div className="gift__services">
+                    <a target="_blank" href="twint://recipient=0797977686">
+                        <img src={LogoTwint} alt="" />
+                        <span>Pay with TWINT</span>
+                    </a>
+                    <a target="_blank" href="https://qr.vipps.no/28/2/01/031/4799229116?v=1">
+                        <img src={LogoVipps} alt="" />
+                        <span>Use Vipps</span>
+                    </a>
+                    <a target="_blank" href="https://paypal.me/jaredisaksen?country.x=NO&locale.x=no_NO">
+                        <img src={LogoPaypal} alt="" />
+                        <span>Use PayPal</span>
+                    </a>
+                </div>
+                <p>or contact us if you want to contribute in some other way</p>
             </div>
         </>
     )

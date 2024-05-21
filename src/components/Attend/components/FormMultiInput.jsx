@@ -13,7 +13,9 @@ export default function FormMultiInput(props) {
         placeholder, 
         value, 
         onChange, 
-        legendText, 
+        legendText,
+        sideMenuPlaceholder,
+        sideMenu,
         addButtonText} = {...props}
     
 
@@ -21,6 +23,7 @@ export default function FormMultiInput(props) {
     const listContainerRef = useRef(null)
     
     const [inputValues, setInputValues] = useState([""])
+    const [timeValues, setTimeValues] = useState([])
 
     useEffect(() => {
         if (listContainerRef.current && inputValues[inputValues.length - 1] == '') {
@@ -36,6 +39,12 @@ export default function FormMultiInput(props) {
         setInputValues(newInputValues);
     }
 
+    const handleSelectChange = (index, value) => {
+        const newTimeValues = [...timeValues];
+        newTimeValues[index] = value;
+        setTimeValues(newTimeValues);
+    }
+
     const handleAddButtonClick = (e) => {
         setInputValues([...inputValues, ''])
     }
@@ -44,7 +53,11 @@ export default function FormMultiInput(props) {
     return (
         <>
             <fieldset 
-                className="form-multi-input" 
+                className={`
+                    form-multi-input 
+                    ${sideMenu ? 'side-menu' : ''}
+                    ${inputValues.length === 1 ? '' : 'more-items'}
+                `} 
                 role="group" 
                 aria-labelledby={`${name}-multi-input}`}
                 ref={hostRef}
@@ -62,6 +75,26 @@ export default function FormMultiInput(props) {
                                 placeholder={placeholder}
                                 onChange={e => handleInputChange(index, e.target.value)}
                             />
+                            {sideMenu && 
+                                
+                                <select
+                                    name={`${name}-time-${index}`}
+                                    id={`${name}-time-${index}`}
+                                    value={timeValues[0] != null ? timeValues[index] : null}
+                                    placeholder={sideMenuPlaceholder}
+                                    onChange={e => handleSelectChange(index, e.target.value)}
+                                    style={timeValues[0] == null ? {color: 'var(--text-gray)'} : {}}
+                                >
+                                    {timeValues[0] == null &&
+                                        <option 
+                                            value={sideMenuPlaceholder}
+                                        >{sideMenuPlaceholder}</option>
+                                    }
+                                    {sideMenu.map((option, idx) => (
+                                        <option key={idx} value={option}>{option}</option>
+                                    ))}
+                                </select>
+                            }
                             <button
                                 style={inputValues.length === 1 ? {visibility: 'hidden'} : {}}
                                 className="form-multi-input__remove-button"

@@ -1,3 +1,5 @@
+@import '../../../layouts';
+
 .form-multi-input {
 
     margin: 0 2rem;
@@ -37,6 +39,8 @@
         li {
 
             position: relative;
+            width: 80%;
+            margin: 0 auto;
             
             .form-input {
                 grid-template-columns: 1fr;
@@ -48,12 +52,98 @@
                 input {
                     grid-column: 1 / 2;
                     width: 100%;
+                    width: -webkit-fill-available;
                     margin: 0 auto;
                 }
             }
 
         }
     }
+
+    &.side-menu {
+        ul {
+            li {
+                display: grid;
+                grid-auto-flow: column;
+                column-gap: 3rem;
+                
+                @media (max-width: 860px) {
+                    grid-auto-flow: row;
+                    padding-left: 2rem;
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        bottom: 15%;
+                        width: 10px;
+                        background-color: var(--gray-light);
+                    } 
+                } 
+
+                .form-input {
+                    @media (max-width: 860px) {
+                        margin-bottom: 0;
+                        margin-right: 3.25rem;
+                    }
+                }
+
+                select {
+                    background: none;
+                    font-size: 1.26rem;
+                    border: none;
+                    border-bottom: solid 2px var(--text-dark);
+                    height: fit-content;
+                    padding: 0.5rem;
+                    margin-right: 3.25rem;
+                    line-height: 1.8;
+                    display: block;
+                    position: relative;
+                    text-align: center;
+                    
+                    color: var(--text-dark);
+                    appearance: none; // Remove the default arrow
+                    -webkit-appearance: none; // Remove the default arrow for WebKit browsers
+                    -moz-appearance: none; // Remove the default arrow for Firefox
+                    background: url('../../../assets/arrow-point-down.svg') no-repeat right 10px center;
+                    background-size: 16px; 
+                    padding-right: 40px; 
+                
+                    @media (max-width: 860px) {
+                        margin-bottom: 2.5rem;
+                        text-align: start;
+                    }
+
+                    &::-ms-expand {
+                        display: none; // Remove the default arrow for Internet Explorer
+                    }
+                                        
+                    &:focus {
+                        // border: solid 0.5px color-mix(in srgb, var(--text-dark) 25%, white) ;
+                        // border-bottom: solid 2px var(--text-dark);
+                        outline: solid color-mix(in srgb, var(--text-dark) 25%, white) 1px;
+                        // bottom: 1px;
+                        // left: 0.99px;
+                    }
+                    // &c{
+                    //     color: var(--gray-light);
+                    //     line-height: 1.8;
+                    // }
+
+                    & option:first-child {
+                        // display: none;
+                    }
+
+                    option {
+                        color: var(--text-dark);
+                    }
+                }
+
+            }
+        }
+    }
+
 
     button {
         background: none;
@@ -83,6 +173,16 @@
             width: 10px;
             height: 1px;
         } 
+    }
+    
+    &.side-menu.more-items &__remove-button {
+        right: 0.35rem;
+        
+        @media (max-width: 860px) {
+            top: 2rem;
+            right: -0.65rem;
+        }
+
     }
 
     &__add-button {
