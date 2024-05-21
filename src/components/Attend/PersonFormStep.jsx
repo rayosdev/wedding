@@ -211,10 +211,16 @@ export default function PersonFormStep() {
                 style={['gift'].includes(_activeFormStep) ? {} : {display: 'none'}}
             >
                 <img src={GiftImage} alt="" />
-                <p>
+
+                <p style={_userAttendance ? {} : {display: 'none'}}>
                     Your presence at our wedding party is gift enough!
                     But if you wish to give something, a contribution to
                     our future would mean a lot to us.
+                </p>
+                <p style={_userAttendance == false ? {} : {display: 'none'}}>
+                We’re sad you can’t make it.<br />
+                If you wish to give us something,<br />
+                a contribution to our savings would mean a lot to us.
                 </p>
 
                 <p>You could use one of the following services</p>
