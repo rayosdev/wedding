@@ -4,7 +4,7 @@
 
     margin: 0 2rem;
     margin-bottom: 4rem;
-    border: 0.5px solid #000;
+    border: 1px solid #000;
 
     legend {
         text-align: center;
@@ -96,7 +96,7 @@
                     background: none;
                     font-size: 1.26rem;
                     border: none;
-                    border-bottom: solid 2px var(--text-dark);
+                    border-bottom: solid 1px var(--text-dark);
                     height: fit-content;
                     padding: 0.5rem;
                     // margin-right: 3.25rem;
