@@ -67,8 +67,16 @@ export default function PersonFormStep() {
         _activeFormStep,
         _userHasCrew,
         _userCrewList,
+        _bringFoodList,
+        _foodPreferenceAllergies,
+        _programItem,
+        _programTimePreference,
         updateUserHasCrew,
         updateUserCrewList,
+        updateBringFoodList,
+        updateFoodPreferenceAllergies,
+        updateProgramItem,
+        updateProgramTimePreference,
         updateUserAttendance,
         updateUserName,
         updateUserEmail,
@@ -191,7 +199,7 @@ export default function PersonFormStep() {
                     placeholder="food name"
                     legendText="I want to bring something"
                     addButtonText="add food item"
-                    onChange={e => console.log("test:::")}
+                    onChange={e => updateBringFoodList(e)}
                 />
                 <div 
                     onClick={_e => document.querySelector('.attend-form--section-food').scrollTo({
@@ -201,12 +209,13 @@ export default function PersonFormStep() {
                 >
                 <FormMultiInput 
                     type="text" 
-                    name="prefrence:items" 
+                    name="preference:items" 
                     label=""
                     placeholder="e.g: nuts, milk, vegetarian"
                     legendText="There are food allergies or preferences we should be aware of"
                     addButtonText="add item"
                     onChange={e => {
+                        updateFoodPreferenceAllergies(e)
                         document.querySelector('.attend-form--section-food').scrollTo({
                             top: 220,
                             behavior: 'smooth'
@@ -228,7 +237,7 @@ export default function PersonFormStep() {
                     addButtonText="add item"
                     sideMenuPlaceholder="preferred time"
                     sideMenu={["no preference", 'at start', 'at middle', 'at end']}
-                    onChange={e => console.log("test:::")}
+                    onChange={e => {updateProgramItem(e[0]); updateProgramTimePreference(e[1])}}
                 />
             </div>
             <div 

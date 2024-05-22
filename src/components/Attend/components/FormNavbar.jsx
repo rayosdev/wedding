@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { firestore, collection, addDoc } from '../../../../firebaseConfig'
 import './FormNavbar.scss'
 
 import formIconFood from '../../../assets/attend-form/food.svg'
@@ -49,6 +50,10 @@ export default function FormNavbar() {
         _formPath,
         _userHasCrew,
         _userCrewList,
+        _bringFoodList,
+        _foodPreferenceAllergies,
+        _programItem,
+        _programTimePreference,
         _userPathHistory,
         updateFormPath,
         updateUserPathHistory
@@ -57,16 +62,45 @@ export default function FormNavbar() {
     const [activeFormStep, setActiveFormStep] = useState(_activeFormStep)
     const [filteredMenuButtons, setFilteredMenuButtons] = useState(menuButtons)
 
+    const addNewPerson = async () => {
+        console.log({
+            name: _userName,
+            email: _userEmail,
+            attending: _userAttendance,
+            group: _userCrewList,
+            bringFood: _bringFoodList,
+            preferenceAllergy: _foodPreferenceAllergies,
+            programItem: _programItem,
+            programTimePreference: _programTimePreference
+        })
+        try {
+            const docRef = await addDoc(collection(firestore, 'users'), {
+                name: _userName,
+                email: _userEmail,
+                attending: _userAttendance,
+                group: _userCrewList,
+                bringFood: _bringFoodList,
+                preferenceAllergy: _foodPreferenceAllergies,
+                programItem: _programItem,
+                programTimePreference: _programTimePreference
+            })
+            console.log("Document written with ID: ", docRef.id)
+        } catch (e) {
+            console.error("Error adding document: ", e)
+        }
+    }
+
     useEffect(() => {
 
+        if (_activeFormStep == 'done' && _userPathHistory.includes('done') == false) addNewPerson()
         updateUserPathHistory([..._userPathHistory, _activeFormStep])
-      
+    
     }, [_activeFormStep])
 
     useEffect(() => {
 
         updateUserPathHistory([])
-      
+    
     }, [_userAttendance])
     
 

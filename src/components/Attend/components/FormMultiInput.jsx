@@ -21,31 +21,36 @@ export default function FormMultiInput(props) {
 
     const hostRef = useRef(null)
     const listContainerRef = useRef(null)
+    const selectListRef = useRef(null)
     
     const [inputValues, setInputValues] = useState([""])
     const [timeValues, setTimeValues] = useState([])
 
     useEffect(() => {
         if (listContainerRef.current && inputValues.at(-1) == '') {
-            listContainerRef.current.scrollTop = listContainerRef.current.scrollHeight - listContainerRef.current.clientHeight - 14;
+            listContainerRef.current.scrollTop = listContainerRef.current.scrollHeight - listContainerRef.current.clientHeight - 14
         }
-        onChange(inputValues)
+        if(sideMenu){
+            onChange([inputValues, timeValues])
+        } else onChange(inputValues)
         setTimeout(() => {
             hostRef.current?.querySelector('li:last-child input[type=text]')?.focus()
-        }, 200);
-    }, [inputValues]);
+        }, 200)
+    }, [inputValues])
     
 
     const handleInputChange = (index, value) => {
-        const newInputValues = [...inputValues];
-        newInputValues[index] = value;
-        setInputValues(newInputValues);
+        const newInputValues = [...inputValues]
+        newInputValues[index] = value
+        setInputValues(newInputValues)
+        if(sideMenu) handleSelectChange(index, selectListRef.current.value)
     }
 
     const handleSelectChange = (index, value) => {
-        const newTimeValues = [...timeValues];
-        newTimeValues[index] = value;
-        setTimeValues(newTimeValues);
+        console.log(value)
+        const newTimeValues = [...timeValues]
+        newTimeValues[index] = value
+        setTimeValues(newTimeValues)
     }
 
     const handleAddButtonClick = (_e) => {
@@ -95,6 +100,7 @@ export default function FormMultiInput(props) {
                             {sideMenu && 
                                 
                                 <select
+                                    ref={selectListRef}
                                     name={`${name}-time-${index}`}
                                     id={`${name}-time-${index}`}
                                     value={timeValues[0] != null ? timeValues[index] : ""}

@@ -8,28 +8,42 @@ export const EFormPath = {
 
 export const useStore = create((set) => ({
     _userAttendance: null,
-    updateUserAttendance:    (v) => set({ _userAttendance: v }),
+    updateUserAttendance:           (v) => set({ _userAttendance: v }),
     
     _userName: null,
-    updateUserName:         (v) => set({ _userName: v }),
+    updateUserName:                 (v) => set({ _userName: v }),
     
     _userEmail: null,
-    updateUserEmail:        (v) => set({ _userEmail: v }),
+    updateUserEmail:                (v) => set({ _userEmail: v }),
 
     _userHasCrew: null,
-    updateUserHasCrew:        (v) => set({ _userHasCrew: v }),
+    updateUserHasCrew:              (v) => set({ _userHasCrew: v }),
 
     _userCrewList:[],
-    updateUserCrewList:        (v) => set({ _userCrewList: v }),
+    updateUserCrewList:             (v) => set({ _userCrewList: v }),
+
+    _bringFoodList:[],
+    updateBringFoodList:            (v) => set({ _bringFoodList: v }),
+
+    _foodPreferenceAllergies:[],
+    updateFoodPreferenceAllergies:  (v) => set({ _foodPreferenceAllergies: v }),
     
+    _programItem:[],
+    updateProgramItem:              (v) => set({ _programItem: v }),
+    
+    _programTimePreference:[],
+    updateProgramTimePreference:    (v) => set({ _programTimePreference: v }),
+
+
+
     _activeFormStep: 'you',
-    updateActiveFormStep:   (v) => set({ _activeFormStep: v }),
+    updateActiveFormStep:           (v) => set({ _activeFormStep: v }),
     
     _formPath: null,
-    updateFormPath:   (v) => set({ _formPath: v }),
+    updateFormPath:                 (v) => set({ _formPath: v }),
     
     _userPathHistory: [],
-    updateUserPathHistory:   (v) => set({ _userPathHistory: v }),
+    updateUserPathHistory:          (v) => set({ _userPathHistory: v }),
     
 
 
