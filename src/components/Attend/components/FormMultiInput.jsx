@@ -27,10 +27,12 @@ export default function FormMultiInput(props) {
 
     useEffect(() => {
         if (listContainerRef.current && inputValues.at(-1) == '') {
-          listContainerRef.current.scrollTop = listContainerRef.current.scrollHeight - listContainerRef.current.clientHeight - 28;
+          listContainerRef.current.scrollTop = listContainerRef.current.scrollHeight - listContainerRef.current.clientHeight - 14;
         }
         onChange(inputValues)
-        hostRef.current?.querySelector('li:last-child input[type=text]')?.focus()
+        setTimeout(() => {
+            hostRef.current?.querySelector('li:last-child input[type=text]')?.focus()
+        }, 200);
     }, [inputValues]);
     
 
@@ -56,11 +58,17 @@ export default function FormMultiInput(props) {
     }
 
     const handleKeyDown = (e) => {
-        console.log("Que", e)
         if (e.key === 'Enter') {
             e.preventDefault()
             if(inputValues.at(-1) == '') return 
             handleAddButtonClick(e)
+        }
+        if (e.key === 'Backspace') {
+            e.preventDefault()
+            if(inputValues.at(-1) != '') return 
+            
+            console.log(e.target)
+            // handelRemoveItem(e)
         }
     }
     

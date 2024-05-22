@@ -5,6 +5,8 @@ export default function FormInput(props) {
 
     const {type, name, label, placeholder, autocomplete, value, onChange, onKeyDown} = {...props}
 
+
+
     let pattern = type == 'email' 
         ? new RegExp("\b[A - Z0 -9._ % +-] + @[A - Z0 - 9. -] +\.[A - Z]{ 2, }\b/i")
         : null
@@ -20,8 +22,11 @@ export default function FormInput(props) {
                 pattern={pattern != null ? pattern : undefined}
                 onChange={onChange}
                 onKeyDown={e => {
-                    e.stopPropagation()
+                    if (e.key === 'Enter') {
+                        if(onKeyDown == null) e.preventDefault() 
+                    }
                     onKeyDown ? onKeyDown(e) : () => {}
+                    e.stopPropagation()
                 }}
                 placeholder={placeholder}
             />
