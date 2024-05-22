@@ -38,12 +38,12 @@
             grid-auto-flow: column;
             
             & > img {
-                width: 120%;
+                width: 100%;
 
                 margin-top: -10%;
                 @include desktop-up {
-                    margin-top: -20%;
-                    margin-left: -20%;
+                    // margin-top: -20%;
+                    // margin-left: -20%;
                     // transform: translateY(-3vw);
                 }
             }

@@ -40,6 +40,11 @@
 
 * {
   font-family: "Barlow", sans-serif;
+
+}
+
+*:focus {
+  outline: solid 1px var(--text-dark);
 }
 
 h1,h2,h3,h4 {
@@ -91,7 +96,7 @@ input::placeholder {
 }
 
 html, body {
-  overflow: hidden; /* Disable scrolling */
+  /* overflow: hidden; */
   height: 100%; /* Ensure the elements take the full height of the viewport */
 }
 
@@ -135,4 +140,26 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+} */
+
+body::-webkit-scrollbar {
+  position: fixed;
+  z-index: 9999;
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #515d3c79;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #90aa6479;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #2c2c2c51;
+}
+
+/* body {
+  overflow: hidden;
 } */

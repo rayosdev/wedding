@@ -27,15 +27,25 @@
         cursor: pointer;
         
         &:focus {
-            outline: none;
+            outline: solid 1px var(--text-dark);
         }
         &:active, 
-        &:target 
-        
-        {
-            outline: solid 1px black !important;
+        &:target  {
+            // border-top: solid 3px var(--gray-light);
         }
     }
+    
+    li.active > button {
+    
+        &:focus {
+            outline: none;
+        }
+        &:active,
+        &:target,
+        &:focus-visible {
+            background: rgba(80, 80, 80, 0.138);
+        }
+    } 
     
     ul {
         list-style: none;

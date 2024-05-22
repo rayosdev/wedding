@@ -83,7 +83,7 @@ export default function PersonFormStep() {
         else if (_activeFormStep == 'group' && _userHasCrew == false){
             updateActiveFormStep('you')
         }
-      
+    
     }, [_userHasCrew])
 
     useEffect(() => {
@@ -98,7 +98,7 @@ export default function PersonFormStep() {
                 setShowAloneOrGroup(false)
             }
         }
-      
+    
     }, [_userName, _userEmail, _userAttendance])
     
     
@@ -107,7 +107,12 @@ export default function PersonFormStep() {
         if(type == 'email') updateUserEmail(e.target.value)
     }
 
-    // console.log(_activeFormStep)
+    const setFocus = (selector) => {
+        setTimeout(() => {
+            document.querySelector(selector)?.focus()
+        }, 100)
+    }
+
 
     return (
         <>
@@ -120,9 +125,12 @@ export default function PersonFormStep() {
                     <RadioGroup 
                         {...radioGroupProps} 
                         handelChange={
-                            e => e.target.value == 'attending:yes' ? 
-                            updateUserAttendance(true) : 
-                            updateUserAttendance(false)
+                            e => {e.target.value == 'attending:yes' ? 
+                                updateUserAttendance(true) : 
+                                updateUserAttendance(false)
+                                
+                                setFocus('input[name="user:name"]')
+                            }
                         } 
                         />
                 </div>
@@ -152,7 +160,10 @@ export default function PersonFormStep() {
             >
                 <RadioGroup 
                     {...radioGroupAloneOrGroup} 
-                    handelChange={e => updateUserHasCrew(e.target.value == 'group' ? true : false)} 
+                    handelChange={e => {
+                        updateUserHasCrew(e.target.value == 'group' ? true : false)
+                        if (e.target.value == 'group') setFocus('input[name="group:members-0"]')
+                    }} 
                 />
             </div>
             <div 
@@ -182,6 +193,12 @@ export default function PersonFormStep() {
                     addButtonText="add food item"
                     onChange={e => console.log("test:::")}
                 />
+                <div 
+                    onClick={_e => document.querySelector('.attend-form--section-food').scrollTo({
+                        top: 220,
+                        behavior: 'smooth'
+                    })}
+                >
                 <FormMultiInput 
                     type="text" 
                     name="prefrence:items" 
@@ -189,8 +206,14 @@ export default function PersonFormStep() {
                     placeholder="e.g: nuts, milk, vegetarian"
                     legendText="There are food allergies or preferences we should be aware of"
                     addButtonText="add item"
-                    onChange={e => console.log("test:::")}
+                    onChange={e => {
+                        document.querySelector('.attend-form--section-food').scrollTo({
+                            top: 220,
+                            behavior: 'smooth'
+                        })
+                    }}
                 />
+                </div>
             </div>
             <div 
                 className="attend-form--section-program"
