@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import './AttendForm.scss'
 import PersonFormStep from './PersonFormStep' 
 
@@ -9,6 +9,7 @@ import { EFormPath, useStore } from '../../store'
 
 export default function AttendForm() {
 
+  const host = useRef(null)
 
   const {
     _userAttendance,
@@ -47,7 +48,10 @@ export default function AttendForm() {
 
   return (
     <>
-      <div className="attend-form--wrapper">
+      <div className="attend-form--wrapper" ref={host} onClick={e => host.current.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+      })}>
         <form className="attend-form" onSubmit={handelSubmit}>
           <div className="attend-form__content">
             {_activeFormStep == 'you' && 
