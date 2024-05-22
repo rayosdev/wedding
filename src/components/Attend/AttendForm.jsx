@@ -9,7 +9,7 @@ import { EFormPath, useStore } from '../../store'
 
 export default function AttendForm() {
 
-  const host = useRef(null)
+  const formRef = useRef(null)
 
   const {
     _userAttendance,
@@ -48,11 +48,11 @@ export default function AttendForm() {
 
   return (
     <>
-      <div className="attend-form--wrapper" ref={host} onClick={e => host.current.scrollIntoView({
+      <div className="attend-form--wrapper" onClick={e => formRef.current.scrollIntoView({
           behavior: 'smooth',
           block: 'start'
       })}>
-        <form className="attend-form" onSubmit={handelSubmit}>
+        <form className="attend-form" onSubmit={handelSubmit} ref={formRef}>
           <div className="attend-form__content">
             {_activeFormStep == 'you' && 
               <h2>Will you attend?</h2>
@@ -86,9 +86,9 @@ export default function AttendForm() {
                 <h2>Wanna surprise us with a gift?</h2>
               </> 
             }
-            {(_activeFormStep == 'thanks') &&
+            {(_activeFormStep == 'done') &&
               <>
-                <h2>Thank for your response</h2>
+                <h2>Thank you!</h2>
               </> 
             }
             <PersonFormStep />

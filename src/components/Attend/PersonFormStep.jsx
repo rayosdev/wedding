@@ -243,15 +243,15 @@ export default function PersonFormStep() {
                 <p>or contact us if you want to contribute in some other way</p>
             </div>
             <div 
-                className="thanks thanks__container"
-                style={['thanks'].includes(_activeFormStep) ? {} : {display: 'none'}}
+                className="done done__container"
+                style={['done'].includes(_activeFormStep) ? {} : {display: 'none'}}
             >
                 <img src={GiftImage} alt="" />
 
                 <br/>
                 <p style={_userAttendance ? {} : {display: 'none'}}>
-                    We appreciate you taking time to fill this out.
-                    Looking forward to seeing you soon
+                    We appreciate you taking time to fill this out and
+                    look forward to seeing you soon
                     <br/>
                     <br/><i>Kind Regards</i>
                     <br/><i>Mr & Ms Isaksen</i>

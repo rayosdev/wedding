@@ -6,7 +6,7 @@ import formIconYou from '../../../assets/attend-form/you.svg'
 import formIconGift from '../../../assets/attend-form/gift.svg'
 import formIconProgram from '../../../assets/attend-form/program.svg'
 import formIconGroup from '../../../assets/attend-form/group.svg'
-import formIconThanks from '../../../assets/attend-form/thanks.svg'
+import formIcondone from '../../../assets/attend-form/done.svg'
 import arrowPoint from '../../../assets/arrow-point.svg'
 
 import { useStore, EFormPath } from '../../../store'
@@ -33,8 +33,8 @@ const menuButtons = [
         text: "gift"
     },
     {
-        imageSrc: formIconThanks,
-        text: "thanks"
+        imageSrc: formIcondone,
+        text: "done"
     },
 ]
 
@@ -75,20 +75,20 @@ export default function FormNavbar() {
         switch (_formPath) {
             case EFormPath.CANT_COME:
                 setFilteredMenuButtons(menuButtons.filter(item => {
-                    return ['you', 'gift', 'thanks'].includes(item.text)
+                    return ['you', 'gift', 'done'].includes(item.text)
                 }))
                 break;
                 
             case EFormPath.JUST_ME:
                 setFilteredMenuButtons(menuButtons.filter(item => {
-                    return ['you', 'food', 'program', 'gift', 'thanks'].includes(item.text)
+                    return ['you', 'food', 'program', 'gift', 'done'].includes(item.text)
                 }))
                 
                 break;
                 
             case EFormPath.ME_AND_CREW:
                 setFilteredMenuButtons(menuButtons.filter(item => {
-                    return ['you', 'food', 'group', 'program', 'gift', 'thanks'].includes(item.text)
+                    return ['you', 'food', 'group', 'program', 'gift', 'done'].includes(item.text)
                 })) 
                 break;
         
@@ -147,7 +147,7 @@ export default function FormNavbar() {
                     _userPathHistory.includes('program')
                 ) return true
                 break;
-            case 'thanks':
+            case 'done':
                 if(_formPath == EFormPath.CANT_COME && _userPathHistory.includes('gift')) return true
                 if(
                     _userAttendance && 

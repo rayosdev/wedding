@@ -42,7 +42,7 @@ export default function Where() {
                                         fill="#515D3C" />
                                 </svg>
                                 <p className="item__type">Email:</p>
-                                <a href="mailto:rolfidarisaksen@gmail.com?subject=About%20isaksen%20tech%20services">
+                                <a href="mailto:rolfidarisaksen@gmail.com?subject=Wedding%20questions">
                                 rolfidarisaksen@gmail.com </a>
                             </div>
                             <div className="content__item item">
