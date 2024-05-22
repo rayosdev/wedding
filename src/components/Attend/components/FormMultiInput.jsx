@@ -26,10 +26,11 @@ export default function FormMultiInput(props) {
     const [timeValues, setTimeValues] = useState([])
 
     useEffect(() => {
-        if (listContainerRef.current && inputValues[inputValues.length - 1] == '') {
+        if (listContainerRef.current && inputValues.at(-1) == '') {
           listContainerRef.current.scrollTop = listContainerRef.current.scrollHeight - listContainerRef.current.clientHeight - 28;
         }
         onChange(inputValues)
+        hostRef.current?.querySelector('li:last-child input[type=text]')?.focus()
     }, [inputValues]);
     
 
@@ -45,13 +46,22 @@ export default function FormMultiInput(props) {
         setTimeValues(newTimeValues);
     }
 
-    const handleAddButtonClick = (e) => {
+    const handleAddButtonClick = (_e) => {
         setInputValues([...inputValues, ''])
     }
 
-    const handelRemoveItem = (e, index) => {
+    const handelRemoveItem = (_e, index) => {
         setInputValues(inputValues.filter((_item, i) => i !== index))
         setTimeValues(timeValues.filter((_item, i) => i !== index))
+    }
+
+    const handleKeyDown = (e) => {
+        console.log("Que", e)
+        if (e.key === 'Enter') {
+            e.preventDefault()
+            if(inputValues.at(-1) == '') return 
+            handleAddButtonClick(e)
+        }
     }
     
 
@@ -79,6 +89,7 @@ export default function FormMultiInput(props) {
                                 value={element}
                                 placeholder={placeholder}
                                 onChange={e => handleInputChange(index, e.target.value)}
+                                onKeyDown={handleKeyDown}
                             />
                             {sideMenu && 
                                 

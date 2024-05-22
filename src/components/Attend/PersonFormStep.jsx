@@ -107,7 +107,7 @@ export default function PersonFormStep() {
         if(type == 'email') updateUserEmail(e.target.value)
     }
 
-    console.log(_activeFormStep)
+    // console.log(_activeFormStep)
 
     return (
         <>

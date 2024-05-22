@@ -76,6 +76,11 @@ ul {
   list-style: none;
 }
 
+p > sup {
+  position: relative;
+  top: 4px
+}
+
 input::placeholder {
   color: var(--text-gray);
 }

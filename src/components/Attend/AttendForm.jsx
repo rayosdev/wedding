@@ -62,7 +62,7 @@ export default function AttendForm() {
             }
             {(_activeFormStep == 'you' || _activeFormStep == 'group') && 
               <p>
-                We have limited space, so please let us know by signing up before June 2nd so we can plan accordingly
+                We have limited space, so please let us know by signing up before June 2<sup>nd</sup> so we can plan accordingly
               </p>
             }
             {_activeFormStep == 'food' && 

@@ -26,20 +26,25 @@
             width: 25%;
             max-width: 400px;
             min-width: 220px;
-            bottom: 40%;
+            bottom: 70%;
         }
 
         &_container {
-            margin-top: 12rem;
+            margin-top: auto;
             width: 100%;
-            max-height: 300px;
+            max-height: 480px;
             overflow: hidden;
+            display: grid;
+            grid-auto-flow: column;
             
             & > img {
-                width: 50%;
+                width: 120%;
 
+                margin-top: -10%;
                 @include desktop-up {
-                    transform: translateY(-3vw);
+                    margin-top: -20%;
+                    margin-left: -20%;
+                    // transform: translateY(-3vw);
                 }
             }
         }

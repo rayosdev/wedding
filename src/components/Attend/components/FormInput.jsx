@@ -3,7 +3,7 @@ import './FormInput.scss'
 
 export default function FormInput(props) {
 
-    const {type, name, label, placeholder, autocomplete, value, onChange} = {...props}
+    const {type, name, label, placeholder, autocomplete, value, onChange, onKeyDown} = {...props}
 
     let pattern = type == 'email' 
         ? new RegExp("\b[A - Z0 -9._ % +-] + @[A - Z0 - 9. -] +\.[A - Z]{ 2, }\b/i")
@@ -19,6 +19,10 @@ export default function FormInput(props) {
                 autoComplete={autocomplete}
                 pattern={pattern != null ? pattern : undefined}
                 onChange={onChange}
+                onKeyDown={e => {
+                    e.stopPropagation()
+                    onKeyDown ? onKeyDown(e) : () => {}
+                }}
                 placeholder={placeholder}
             />
         </div>
