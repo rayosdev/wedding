@@ -43,7 +43,6 @@ export default function FormNavbar() {
 
     const {
         _activeFormStep,
-        updateActiveFormStep,
         _userAttendance,
         _userName,
         _userEmail,
@@ -55,7 +54,16 @@ export default function FormNavbar() {
         _programItem,
         _programTimePreference,
         _userPathHistory,
-        updateFormPath,
+        updateUserHasCrew,
+        updateUserCrewList,
+        updateBringFoodList,
+        updateFoodPreferenceAllergies,
+        updateProgramItem,
+        updateProgramTimePreference,
+        updateUserAttendance,
+        updateUserName,
+        updateUserEmail,
+        updateActiveFormStep,
         updateUserPathHistory
     } = useStore()
 
@@ -63,7 +71,7 @@ export default function FormNavbar() {
     const [filteredMenuButtons, setFilteredMenuButtons] = useState(menuButtons)
 
     const addNewPerson = async () => {
-        console.log({
+        let data = {
             name: _userName,
             email: _userEmail,
             attending: _userAttendance,
@@ -72,18 +80,14 @@ export default function FormNavbar() {
             preferenceAllergy: _foodPreferenceAllergies,
             programItem: _programItem,
             programTimePreference: _programTimePreference
-        })
+        }
+        if(_userAttendance == false) data = {
+            name: _userName,
+            email: _userEmail,
+            attending: _userAttendance
+        }
         try {
-            const docRef = await addDoc(collection(firestore, 'users'), {
-                name: _userName,
-                email: _userEmail,
-                attending: _userAttendance,
-                group: _userCrewList,
-                bringFood: _bringFoodList,
-                preferenceAllergy: _foodPreferenceAllergies,
-                programItem: _programItem,
-                programTimePreference: _programTimePreference
-            })
+            const docRef = await addDoc(collection(firestore, 'users'), data)
             console.log("Document written with ID: ", docRef.id)
         } catch (e) {
             console.error("Error adding document: ", e)
@@ -100,6 +104,7 @@ export default function FormNavbar() {
     useEffect(() => {
 
         updateUserPathHistory([])
+        
     
     }, [_userAttendance])
     

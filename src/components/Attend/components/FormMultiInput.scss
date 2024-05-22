@@ -94,6 +94,9 @@
                     }
                 }
 
+                &:first-child select {
+                    line-height: 1.76;
+                }
                 select {
                     background: none;
                     font-size: 1.26rem;
@@ -102,7 +105,7 @@
                     height: fit-content;
                     padding: 0.5rem;
                     // margin-right: 3.25rem;
-                    line-height: 1.76;
+                    line-height: 1.8;
                     display: block;
                     position: relative;
                     text-align: center;
