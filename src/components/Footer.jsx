@@ -33,7 +33,7 @@ export default function Footer() {
                                         </clipPath>
                                     </defs>
                                 </svg>
-                                <p className="item__type">WhatsApp:</p>
+                                <p className="item__type">Mobile/WhatsApp:</p>
                                 <a href="tel:+47 99 22 91 16">
                                     +47 99 22 91 16
                                 </a>

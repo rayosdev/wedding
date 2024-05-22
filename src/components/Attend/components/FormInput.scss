@@ -1,12 +1,14 @@
 .form-input {
 
     display: grid;
-    grid-template-columns: min-content 50px auto;
+    grid-template-columns: min-content 20px minmax(200px, 100%);
     font-size: 20px;
+    margin: 0 auto;
     margin-bottom: 1.8rem;
+    max-width: 520px;
     
     label {
-        
+        align-self: center;
     }
     input {
         grid-column: 3/4;
@@ -16,7 +18,7 @@
         border: none;
         border-bottom: solid 1px var(--text-dark);
         padding: 0.5rem;
-        max-width: 420px;
+        // max-width: 420px;
         outline: none;
         color: var(--text-dark);
         line-height: 1.8;

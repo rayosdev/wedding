@@ -82,6 +82,11 @@ export default function AttendForm() {
                 <h2>Wanna surprise us with a gift?</h2>
               </> 
             }
+            {(_activeFormStep == 'thanks') &&
+              <>
+                <h2>Thank for your response</h2>
+              </> 
+            }
             <PersonFormStep />
             <FormNavbar />
           </div>

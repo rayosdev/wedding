@@ -6,6 +6,7 @@ import formIconYou from '../../../assets/attend-form/you.svg'
 import formIconGift from '../../../assets/attend-form/gift.svg'
 import formIconProgram from '../../../assets/attend-form/program.svg'
 import formIconGroup from '../../../assets/attend-form/group.svg'
+import formIconThanks from '../../../assets/attend-form/thanks.svg'
 import arrowPoint from '../../../assets/arrow-point.svg'
 
 import { useStore, EFormPath } from '../../../store'
@@ -31,6 +32,10 @@ const menuButtons = [
         imageSrc: formIconGift,
         text: "gift"
     },
+    {
+        imageSrc: formIconThanks,
+        text: "thanks"
+    },
 ]
 
 export default function FormNavbar() {
@@ -38,8 +43,15 @@ export default function FormNavbar() {
     const {
         _activeFormStep,
         updateActiveFormStep,
+        _userAttendance,
+        _userName,
+        _userEmail,
         _formPath,
-        updateFormPath
+        _userHasCrew,
+        _userCrewList,
+        _userPathHistory,
+        updateFormPath,
+        updateUserPathHistory
     } = useStore()
 
     const [activeFormStep, setActiveFormStep] = useState(_activeFormStep)
@@ -47,31 +59,36 @@ export default function FormNavbar() {
 
     useEffect(() => {
 
-        console.log(_activeFormStep)
+        updateUserPathHistory([..._userPathHistory, _activeFormStep])
       
     }, [_activeFormStep])
+
+    useEffect(() => {
+
+        updateUserPathHistory([])
+      
+    }, [_userAttendance])
     
 
 
     useEffect(() => {
-        console
         switch (_formPath) {
             case EFormPath.CANT_COME:
                 setFilteredMenuButtons(menuButtons.filter(item => {
-                    return ['you', 'gift'].includes(item.text)
+                    return ['you', 'gift', 'thanks'].includes(item.text)
                 }))
                 break;
                 
             case EFormPath.JUST_ME:
                 setFilteredMenuButtons(menuButtons.filter(item => {
-                    return ['you', 'food', 'program', 'gift'].includes(item.text)
+                    return ['you', 'food', 'program', 'gift', 'thanks'].includes(item.text)
                 }))
                 
                 break;
                 
             case EFormPath.ME_AND_CREW:
                 setFilteredMenuButtons(menuButtons.filter(item => {
-                    return ['you', 'food', 'group', 'program', 'gift'].includes(item.text)
+                    return ['you', 'food', 'group', 'program', 'gift', 'thanks'].includes(item.text)
                 })) 
                 break;
         
@@ -101,7 +118,57 @@ export default function FormNavbar() {
         
     }
 
-    
+    const showOrHide = (type) => {
+        switch (type) {
+            case 'you':
+                return true
+                break;
+            case 'group':
+                if(_userHasCrew) return true
+                break;
+            case 'food':
+                if(_userHasCrew == false) return true
+                if(_userCrewList[0] != '') return true
+                break;
+            case 'program':
+                if(
+                    _userAttendance && 
+                    (_userCrewList[0] != '' || _userHasCrew == false) &&
+                    _userPathHistory.includes('food')
+                ) return true
+                
+                break;
+            case 'gift':
+                if(_formPath == EFormPath.CANT_COME && (_userName?.length > 0 && _userEmail?.length > 0)) return true
+                if(
+                    _userAttendance && 
+                    (_userCrewList[0] != '' || _userHasCrew == false) &&
+                    _userPathHistory.includes('program')
+                ) return true
+                break;
+            case 'thanks':
+                if(_formPath == EFormPath.CANT_COME && _userPathHistory.includes('gift')) return true
+                if(
+                    _userAttendance && 
+                    (_userCrewList[0] != '' || _userHasCrew == false) &&
+                    _userPathHistory.includes('gift')
+                ) return true
+                break;
+            case 'next':
+                if(
+                    _activeFormStep == 'you' && 
+                    (_userName?.length > 0 && _userEmail?.length > 0) &&
+                    (_userHasCrew != null || _userAttendance == false)
+                ) return true
+                if(_activeFormStep == 'group' && _userCrewList[0] != '') return true
+                if(['food', 'program', 'gift'].includes(_activeFormStep)) return true
+                break;
+        
+            default:
+                break;
+        }
+        
+    }
 
 
     return (
@@ -118,6 +185,7 @@ export default function FormNavbar() {
                     <li 
                         key={button.text} 
                         className={`attend-form-menu__button-wrapper ${_activeFormStep == button.text ? 'active' : '' }`}
+                        style={showOrHide(button.text) ? {} : {visibility: 'hidden'}}
                     >
                         <button 
                             className="attend-form-menu__button"
@@ -131,6 +199,7 @@ export default function FormNavbar() {
             </ul>
             <button 
                 className="attend-form-menu__button--next"
+                style={showOrHide('next') ? {} : {visibility: 'hidden'}}
                 onClick={e => handelFormNavButtonClicked(e, 'next')}
             >Next <img src={arrowPoint} /></button>
         </div>

@@ -3,7 +3,7 @@
 .form-multi-input {
 
     margin: 0 2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     border: 1px solid #000;
 
     legend {
@@ -83,7 +83,7 @@
                         width: 10px;
                         background-color: var(--gray-light);
                     } 
-                } 
+                }
 
                 .form-input {
                     @media (max-width: 860px) {
@@ -148,6 +148,12 @@
         }
     }
 
+    &.side-menu &__select-label {
+        justify-content: end;
+        display: grid;
+        padding-right: 26.6%;
+        margin-bottom: -1.6rem;
+    }
 
     button {
         background: none;
@@ -180,7 +186,7 @@
     }
     
     &.side-menu.more-items &__remove-button {
-        right: 0.35rem;
+        right: -2.65rem;
         
         @media (max-width: 860px) {
             top: 2rem;

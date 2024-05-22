@@ -4,7 +4,8 @@
     background-color: var(--deep-green);
     position: relative;
     display: grid;
-    padding-top: 5rem;
+    padding-top: 16rem;
+    margin-top: -5px;
 
     .container {
         text-align: center;
@@ -36,7 +37,7 @@
     &__background-decoration {
         
         position: absolute;
-        top: 90px;
+        top: 300px;
         // margin-top: -350px;
         // margin-bottom: -400px;
         overflow: hidden;

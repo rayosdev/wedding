@@ -66,7 +66,9 @@ export default function PersonFormStep() {
         _userEmail,
         _activeFormStep,
         _userHasCrew,
+        _userCrewList,
         updateUserHasCrew,
+        updateUserCrewList,
         updateUserAttendance,
         updateUserName,
         updateUserEmail,
@@ -164,7 +166,7 @@ export default function PersonFormStep() {
                     placeholder="persons name"
                     legendText="What are the names of the people you are bringing?"
                     addButtonText="add person"
-                    onChange={e => console.log("test:::")}
+                    onChange={e => updateUserCrewList(e)}
                 />
             </div>
             <div 
@@ -238,6 +240,24 @@ export default function PersonFormStep() {
                         <span>Use PayPal</span>
                     </a>
                 </div>
+                <p>or contact us if you want to contribute in some other way</p>
+            </div>
+            <div 
+                className="thanks thanks__container"
+                style={['thanks'].includes(_activeFormStep) ? {} : {display: 'none'}}
+            >
+                <img src={GiftImage} alt="" />
+
+                <p style={_userAttendance ? {} : {display: 'none'}}>
+                    Your presence at our wedding party is gift enough!
+                    But if you wish to give something, a contribution to
+                    our future would mean a lot to us.
+                </p>
+                <p style={_userAttendance == false ? {} : {display: 'none'}}>
+                We’re sad you can’t make it.<br />
+                If you wish to give us something,<br />
+                a contribution to our savings would mean a lot to us.
+                </p>
                 <p>or contact us if you want to contribute in some other way</p>
             </div>
         </>

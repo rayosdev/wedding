@@ -28,6 +28,9 @@ export const useStore = create((set) => ({
     _formPath: null,
     updateFormPath:   (v) => set({ _formPath: v }),
     
+    _userPathHistory: [],
+    updateUserPathHistory:   (v) => set({ _userPathHistory: v }),
+    
 
 
 

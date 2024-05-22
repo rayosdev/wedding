@@ -42,8 +42,8 @@ export default function Where() {
                                         fill="#515D3C" />
                                 </svg>
                                 <p className="item__type">Email:</p>
-                                <a href="mailto:isaksen.tech.dev@gmail.com?subject=About%20isaksen%20tech%20services">
-                                    isaksen.tech.dev@gmail.com </a>
+                                <a href="mailto:rolfidarisaksen@gmail.com?subject=About%20isaksen%20tech%20services">
+                                rolfidarisaksen@gmail.com </a>
                             </div>
                             <div className="content__item item">
                                 <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,9 +58,9 @@ export default function Where() {
                                         </clipPath>
                                     </defs>
                                 </svg>
-                                <p className="item__type">WhatsApp:</p>
-                                <a href="tel:+47 99 22 91 16">
-                                    +47 99 22 91 16
+                                <p className="item__type">Mobile/WhatsApp:</p>
+                                <a href="tel:+47 915 62 746">
+                                    +47 915 62 746
                                 </a>
                             </div>
                         </div>

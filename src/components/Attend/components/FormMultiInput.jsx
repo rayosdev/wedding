@@ -48,6 +48,11 @@ export default function FormMultiInput(props) {
     const handleAddButtonClick = (e) => {
         setInputValues([...inputValues, ''])
     }
+
+    const handelRemoveItem = (e, index) => {
+        setInputValues(inputValues.filter((_item, i) => i !== index))
+        setTimeValues(timeValues.filter((_item, i) => i !== index))
+    }
     
 
     return (
@@ -80,12 +85,12 @@ export default function FormMultiInput(props) {
                                 <select
                                     name={`${name}-time-${index}`}
                                     id={`${name}-time-${index}`}
-                                    value={timeValues[0] != null ? timeValues[index] : null}
+                                    value={timeValues[0] != null ? timeValues[index] : ""}
                                     placeholder={sideMenuPlaceholder}
                                     onChange={e => handleSelectChange(index, e.target.value)}
-                                    style={timeValues[0] == null ? {color: 'var(--text-gray)'} : {}}
+                                    style={timeValues[index] == null ? {color: 'var(--text-gray)'} : {}}
                                 >
-                                    {timeValues[0] == null &&
+                                    {timeValues[index] == null &&
                                         <option 
                                             value={sideMenuPlaceholder}
                                         >{sideMenuPlaceholder}</option>
@@ -98,7 +103,7 @@ export default function FormMultiInput(props) {
                             <button
                                 style={inputValues.length === 1 ? {visibility: 'hidden'} : {}}
                                 className="form-multi-input__remove-button"
-                                onClick={e => setInputValues(inputValues.filter((item, i) => i !== index))}
+                                onClick={e => handelRemoveItem(e, index)}
                             ></button>
                         </li>
                     ))}
