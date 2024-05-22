@@ -100,6 +100,7 @@ export default function FormNavbar() {
     
 
     const handelFormNavButtonClicked = (e, name) => {
+        e.preventDefault()
 
         let clickedButton = e.target 
         if (e.target.nodeName !== 'BUTTON') {

@@ -85,6 +85,17 @@ input::placeholder {
   user-select: none;
 }
 
+html, body {
+  overflow: hidden; /* Disable scrolling */
+  height: 100%; /* Ensure the elements take the full height of the viewport */
+}
+
+body {
+  overflow-y: scroll; /* Re-enable vertical scrolling for the body */
+  -webkit-overflow-scrolling: auto; /* Disable the rubber banding effect on iOS Safari */
+}
+
+
 /* button {
   border-radius: 8px;
   border: 1px solid transparent;

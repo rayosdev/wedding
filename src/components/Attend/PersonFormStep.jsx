@@ -227,17 +227,17 @@ export default function PersonFormStep() {
 
                 <p>You could use one of the following services</p>
                 <div className="gift__services">
-                    <a target="_blank" href="twint://recipient=0797977686">
-                        <img src={LogoTwint} alt="" />
-                        <span>Use TWINT</span>
-                    </a>
                     <a target="_blank" href="https://qr.vipps.no/28/2/01/031/4799229116?v=1">
                         <img src={LogoVipps} alt="" />
-                        <span>Use Vipps</span>
+                        <span>Vipps</span>
                     </a>
                     <a target="_blank" href="https://paypal.me/jaredisaksen?country.x=NO&locale.x=no_NO">
                         <img src={LogoPaypal} alt="" />
-                        <span>Use PayPal</span>
+                        <span>PayPal</span>
+                    </a>
+                    <a target="_blank" href="twint://recipient=0797977686">
+                        <img src={LogoTwint} alt="" />
+                        <span>TWINT</span>
                     </a>
                 </div>
                 <p>or contact us if you want to contribute in some other way</p>
@@ -248,17 +248,21 @@ export default function PersonFormStep() {
             >
                 <img src={GiftImage} alt="" />
 
+                <br/>
                 <p style={_userAttendance ? {} : {display: 'none'}}>
-                    Your presence at our wedding party is gift enough!
-                    But if you wish to give something, a contribution to
-                    our future would mean a lot to us.
+                    We appreciate you taking time to fill this out.
+                    Looking forward to seeing you soon
+                    <br/>
+                    <br/><i>Kind Regards</i>
+                    <br/><i>Mr & Ms Isaksen</i>
                 </p>
                 <p style={_userAttendance == false ? {} : {display: 'none'}}>
-                We’re sad you can’t make it.<br />
-                If you wish to give us something,<br />
-                a contribution to our savings would mean a lot to us.
+                    We appreciate you taking time to fill this out.
+                    Hope to see you soon.
+                    <br/>
+                    <br/><i>Kind Regards</i>
+                    <br/><i>Mr & Ms Isaksen</i>
                 </p>
-                <p>or contact us if you want to contribute in some other way</p>
             </div>
         </>
     )
