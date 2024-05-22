@@ -67,7 +67,7 @@
         &--right,
         &--left {
             position: absolute;
-            rotate: 10deg;
+            // rotate: 10deg;
             z-index: 0;
             display: inline;
             transform: translateX(50%) translateY(50%);
@@ -76,7 +76,8 @@
         
         
         &--right {
-            right: 10%;
+            left: 40%;
+            top: 15%;
         }
         &--left {
             left: -25%;
