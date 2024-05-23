@@ -9,13 +9,13 @@
 
 
 // Media Queries Mixins
-@mixin mobile {
+@mixin mobile-small {
   @media (max-width: $breakpoint-mobile) {
     @content;
   }
 }
 
-@mixin mobile-big {
+@mixin mobile {
   @media (max-width: $breakpoint-mobile-big) {
     @content;
   }

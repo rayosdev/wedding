@@ -47,7 +47,6 @@ export default function FormMultiInput(props) {
     }
 
     const handleSelectChange = (index, value) => {
-        console.log(value)
         const newTimeValues = [...timeValues]
         newTimeValues[index] = value
         setTimeValues(newTimeValues)

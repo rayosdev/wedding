@@ -25,6 +25,10 @@
         border: none;
         outline: none;
         cursor: pointer;
+
+        // @media only screen and (max-width: 690px) {
+        //     font-size: 0.75rem;
+        // }
         
         &:focus {
             outline: solid 1px var(--text-dark);
@@ -56,6 +60,13 @@
         grid-auto-flow: column;
         justify-content: space-between;
         width: 100%;
+        @media only screen and (max-width: 690px) {
+            grid-column: 2/3;
+        }
+        @media only screen and (max-width: 525px) {
+            grid-column: 1/4;
+            margin-bottom: 0.5rem;
+        }
     }
     
     
@@ -80,9 +91,18 @@
             width: fit-content;
             padding: 1rem;
             align-items: center;
+            min-width: 12ch;
             
             & > img {
                 width: 8.5px;
+            }
+
+            @media (max-width: 860px) {
+                min-width: auto;
+            }
+
+            @media only screen and (max-width: 690px) {
+                grid-row: 2/3;
             }
         }
         
@@ -95,12 +115,18 @@
             
             padding-right: 2rem;
             justify-self: start;
+            @media only screen and (max-width: 690px) {
+                grid-column: 1/2;
+            }
         }
         &--next {
             padding-left: 2rem;
             justify-self: end;
             & > img {
                 margin-left: 0.75rem;
+            }
+            @media only screen and (max-width: 690px) {
+                grid-column: 3/4;
             }
         }
     }
@@ -129,11 +155,17 @@
             user-select: none;
         }
 
-        & > span,
-        & > img {
+        &  span,
+        &  img {
             pointer-events: none;
             user-select: none;
             position: relative;
+            
+            @media only screen and (max-width: 690px) {
+                width: 100%;
+                max-width: 40px;
+                min-width: 30px;
+            }
         }
     }
 }

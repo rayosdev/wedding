@@ -86,8 +86,13 @@ p > sup {
   top: 4px
 }
 
+input {
+  font-size: 1.25rem;
+}
+
 input::placeholder {
   color: var(--text-gray);
+  font-size: 1.25rem;
 }
 
 .no-pointer-event {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { firestore, collection, addDoc } from '../../../../firebaseConfig'
+import { addDoc, getDocs, query, where, updateDoc } from "firebase/firestore"
+import { firestore, collection } from '../../../../firebaseConfig'
 import './FormNavbar.scss'
 
 import formIconFood from '../../../assets/attend-form/food.svg'
@@ -87,8 +88,22 @@ export default function FormNavbar() {
             attending: _userAttendance
         }
         try {
-            const docRef = await addDoc(collection(firestore, 'users'), data)
-            console.log("Document written with ID: ", docRef.id)
+            // Check if the user already exists
+            const usersRef = collection(firestore, 'users')
+            const q = query(usersRef, where('email', '==', _userEmail))
+            const querySnapshot = await getDocs(q)
+
+            if (querySnapshot.empty) {
+                // If no existing user, add a new document
+                const docRef = await addDoc(usersRef, data)
+                console.log("Document written with ID: ", docRef.id)
+            } else {
+                // If user exists, update the existing document
+                querySnapshot.forEach(async (doc) => {
+                    await updateDoc(doc.ref, data)
+                    console.log("Document updated with ID: ", doc.id)
+                })
+            }
         } catch (e) {
             console.error("Error adding document: ", e)
         }
@@ -96,7 +111,7 @@ export default function FormNavbar() {
 
     useEffect(() => {
 
-        if (_activeFormStep == 'done' && _userPathHistory.includes('done') == false) addNewPerson()
+        if (_activeFormStep == 'done') addNewPerson()
         updateUserPathHistory([..._userPathHistory, _activeFormStep])
     
     }, [_activeFormStep])
@@ -159,9 +174,10 @@ export default function FormNavbar() {
     }
 
     const showOrHide = (type) => {
+        return true
         switch (type) {
             case 'you':
-                return true
+                if(_userAttendance != null) return true
                 break;
             case 'group':
                 if(_userHasCrew) return true
@@ -241,7 +257,7 @@ export default function FormNavbar() {
                 className="attend-form-menu__button--next"
                 style={showOrHide('next') ? {} : {visibility: 'hidden'}}
                 onClick={e => handelFormNavButtonClicked(e, 'next')}
-            >Next <img src={arrowPoint} /></button>
+            >{['gift', 'done'].includes(_activeFormStep) == false ? "Next" : "Submit"} <img src={arrowPoint} /></button>
         </div>
     )
 }

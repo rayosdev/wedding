@@ -2,7 +2,7 @@
     --ocerlap-top: 3rem;
 
     background: var(--white);
-    min-width: 300px;
+    min-width: 250px;
     max-width: 700px;
     margin: 0 auto;
     min-height: 835px;
@@ -16,8 +16,11 @@
     display: grid;
     grid-template-rows: 1fr;
 
-    @media (min-width: 860px) {
+    @media (max-width: 860px) {
         padding: 2rem;
+    }
+    @media (max-width: 525px) {
+        padding: 1.5rem;
     }
     
     &__content {
@@ -46,6 +49,9 @@
             width: 41ch;
             justify-self: center;
             font-size: 1.1rem;
+            @media only screen and (max-width: 690px) {
+                width: 31ch;
+            }
         }
 
         & > img {

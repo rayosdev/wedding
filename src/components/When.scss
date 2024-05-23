@@ -10,6 +10,9 @@
     .container {
         text-align: center;
         margin-bottom: 20rem;
+        @media (max-width: 690px) {
+            margin-bottom: 10rem;
+        }
 
         h2 {
             margin-bottom: -1rem;
@@ -31,6 +34,9 @@
             line-height: 4.125rem;
             text-align: center;
             margin-top: 4rem;
+            @media (max-width: 690px) {
+                font-size: 2.1rem;
+            }
         }
     }
 
@@ -42,9 +48,15 @@
         // margin-bottom: -400px;
         overflow: hidden;
         
-        &_image {
-
+        @media (max-width: 690px) {
+            left: -2vw;
+            bottom: -5%;
+            top: auto;
+            &_image {
+                width: 55%;
+            }
         }
+        
     }
 
     &__bottom-image-sequence {

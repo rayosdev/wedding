@@ -2,17 +2,22 @@
 
     display: grid;
     grid-template-columns: min-content 20px minmax(200px, 100%);
-    font-size: 20px;
+    font-size: 1.25rem;
     margin: 0 auto;
     margin-bottom: 1.8rem;
     max-width: 520px;
+    
+    @media only screen and (max-width: 690px) {
+        width: 90%;
+        margin-bottom: 1.1rem;
+    }
     
     label {
         align-self: center;
     }
     input {
         grid-column: 3/4;
-        font-size: 20px;
+        font-size: 1.25rem;
         font-weight: 400;
         background: none;
         border: none;
@@ -22,7 +27,9 @@
         outline: none;
         color: var(--text-dark);
         line-height: 1.8;
-
+        @media only screen and (max-width: 690px) {
+            padding-right: 2.75rem;
+        }
     }
 }
 
