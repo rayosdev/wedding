@@ -161,10 +161,16 @@ export default function PersonFormStep() {
     useEffect(() => {
         if(showVippsModal || showTwintModal){
             document.body.style.overflow = 'hidden'
-            if(isMobileOrTablet == false) document.body.style.borderRight = 'solid 10px black'
+            if(isMobileOrTablet == false) {
+                document.body.style.borderRight = 'solid 10px black'
+                document.querySelector('header').style.visibility = 'hidden'
+            }
         } else {
             document.body.style.overflow = 'auto'
-            if (isMobileOrTablet == false) document.body.style.borderRight = 'none'
+            if (isMobileOrTablet == false) {
+                document.body.style.borderRight = 'none'
+                document.querySelector('header').style.visibility = 'visible'
+            }
         }
     }, [showVippsModal, showTwintModal])
     
