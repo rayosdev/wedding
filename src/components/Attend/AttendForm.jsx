@@ -95,8 +95,8 @@ export default function AttendForm() {
             <FormNavbar />
           </div>
         </form>
-        <img src={decorationLeftSVG} alt="" className="attend-form__branch--left no-pointer-event"/>
-        <img src={decorationRightSVG} alt="" className="attend-form__branch--right no-pointer-event"/>
+        <img loading="lazy" src={decorationLeftSVG} alt="" className="attend-form__branch--left no-pointer-event"/>
+        <img loading="lazy" src={decorationRightSVG} alt="" className="attend-form__branch--right no-pointer-event"/>
       </div>
     </>
   )

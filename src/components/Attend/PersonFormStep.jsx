@@ -178,7 +178,7 @@ export default function PersonFormStep() {
                     className="attend-form__modal attend-form__modal-vipps fade-in-container"
                     onClick={e => setShowVippsModal(false)}
                 >
-                    <img src={QrCodeVipps} alt="qr-code for vipps" />
+                    <img loading="lazy" src={QrCodeVipps} alt="qr-code for vipps" />
                     <button>Close</button>
                 </div>
             }
@@ -337,7 +337,7 @@ export default function PersonFormStep() {
                 className="gift gift__container"
                 style={['gift'].includes(_activeFormStep) ? {} : {display: 'none'}}
             >
-                <img src={GiftImage} alt="" />
+                <img loading="lazy" src={GiftImage} alt="" />
 
                 <p style={_userAttendance ? {} : {display: 'none'}}>
                     Your presence at our wedding party is gift enough! However, if you wish to give something, a contribution to our future would mean a lot to us.
@@ -355,25 +355,25 @@ export default function PersonFormStep() {
                         target="_blank" 
                         href="https://qr.vipps.no/28/2/01/031/4799229116?v=1"
                         >
-                            <img src={LogoVipps} alt="" />
+                            <img loading="lazy" src={LogoVipps} alt="" />
                             <span>Vipps</span>
                         </a>
                         :
                         <button
                             onClick={_e => setShowVippsModal(true)}
                         >
-                            <img src={LogoVipps} alt="" />
+                            <img loading="lazy" src={LogoVipps} alt="" />
                             <span>Vipps</span>
                         </button>
                     }
                     <a target="_blank" href="https://paypal.me/jaredisaksen?country.x=NO&locale.x=no_NO">
-                        <img src={LogoPaypal} alt="" />
+                        <img loading="lazy" src={LogoPaypal} alt="" />
                         <span>PayPal</span>
                     </a>
                     <button
                         onClick={_e => setShowTwintModal(true)}
                     >
-                        <img src={LogoTwint} alt="" />
+                        <img loading="lazy" src={LogoTwint} alt="" />
                         <span>TWINT</span>
                     </button>
                 </div>
@@ -383,7 +383,7 @@ export default function PersonFormStep() {
                 className="done done__container"
                 style={['done'].includes(_activeFormStep) ? {} : {display: 'none'}}
             >
-                <img src={GiftImage} alt="" />
+                <img loading="lazy" src={GiftImage} alt="" />
 
                 <br/>
                 <p style={_userAttendance ? {} : {display: 'none'}}>

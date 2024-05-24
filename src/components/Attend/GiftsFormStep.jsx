@@ -3,7 +3,7 @@ import React from 'react'
 export default function GiftsFormStep() {
     return (
         <div className="gift gift__container">
-            <img src="" alt="" />
+            <img loading="lazy" src="" alt="" />
             <p>
                 Your presence at our wedding party is gift enough!
                 But if you wish to give something, a contribution to

@@ -239,7 +239,7 @@ export default function FormNavbar() {
                 className="attend-form-menu__button--past"
                 style={_activeFormStep == menuButtons[0].text ? {visibility: 'hidden'} : {}}
                 onClick={e => handelFormNavButtonClicked(e, 'past')}
-            ><img src={arrowPoint} />Past</button>
+            ><img loading="lazy" src={arrowPoint} />Past</button>
             <ul>
                 {filteredMenuButtons.map(button => (
                     <li 
@@ -254,7 +254,7 @@ export default function FormNavbar() {
                             className="attend-form-menu__button"
                             onClick={e => handelFormNavButtonClicked(e, button.text)}
                         >
-                            <img src={button.imageSrc} alt="" />
+                            <img loading="lazy" src={button.imageSrc} alt="" />
                             <span>{button.text}</span>
                         </button>
                     </li>
@@ -264,7 +264,7 @@ export default function FormNavbar() {
                 className="attend-form-menu__button--next"
                 style={showOrHide('next') ? {} : {visibility: 'hidden'}}
                 onClick={e => handelFormNavButtonClicked(e, 'next')}
-            >{['gift', 'done'].includes(_activeFormStep) == false ? "Next" : "Done"} <img src={arrowPoint} /></button>
+            >{['gift', 'done'].includes(_activeFormStep) == false ? "Next" : "Done"} <img loading="lazy" src={arrowPoint} /></button>
         </div>
     )
 }

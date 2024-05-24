@@ -34,7 +34,7 @@ export default function Where() {
                     </p>
                     <div className="where__text-content__contact-info content">
                         <div className="content__pappa-contact">
-                            <img src={pappaSrc} alt="" className="no-pointer-event" />
+                            <img loading="lazy" src={pappaSrc} alt="" className="no-pointer-event" />
                         </div>
 
                         <p className="content__top-text">
@@ -75,20 +75,20 @@ export default function Where() {
                 </div>
             </div>
             <div className="where__decoration-branch">
-                <img src={branchSrc} alt="" className="no-pointer-event" />
+                <img loading="lazy" src={branchSrc} alt="" className="no-pointer-event" />
             </div>
             <div className="where__church-image">
-                <img src={churchSrc} alt="" className="no-pointer-event" />
+                <img loading="lazy" src={churchSrc} alt="" className="no-pointer-event" />
             </div>
             <div className="where__map-image">
                 {/* <div className="where__map-image_content"> */}
                 <a className="where__map-image_content" target="_blank" href="https://www.google.com/maps/place/Ulefossvegen+2,+3730+Skien/@59.1979251,9.6070981,17z/data=!4m6!3m5!1s0x464721261ec6fc21:0x9399ea4507bd7bfc!8m2!3d59.1974755!4d9.6099327!16s%2Fg%2F11cp951t8k?entry=tts&g_ep=EgoyMDI0MDUwNS4wKgBIAVAD">
                         <span>Location</span>
-                        <img className="where__map-image_location-pin-white no-pointer-event" src={locationPinWhiteSrc} alt="" />
+                        <img loading="lazy" className="where__map-image_location-pin-white no-pointer-event" src={locationPinWhiteSrc} alt="" />
                     </a>
                 {/* </div> */}
-                <img className="where__map-image_main no-pointer-event" src={mapSrc} alt="" />
-                <img className="where__map-image_location-pin-green no-pointer-event" src={locationPinGreenSrc} alt="" />
+                <img loading="lazy" className="where__map-image_main no-pointer-event" src={mapSrc} alt="" />
+                <img loading="lazy" className="where__map-image_location-pin-green no-pointer-event" src={locationPinGreenSrc} alt="" />
             </div>
             <a className="where__map-image_sub-link" target="_blank" href="https://www.google.com/maps/place/Ulefossvegen+2,+3730+Skien/@59.1979251,9.6070981,17z/data=!4m6!3m5!1s0x464721261ec6fc21:0x9399ea4507bd7bfc!8m2!3d59.1974755!4d9.6099327!16s%2Fg%2F11cp951t8k?entry=tts&g_ep=EgoyMDI0MDUwNS4wKgBIAVAD">
                 Ulefossvegen 2, 3730 Skien

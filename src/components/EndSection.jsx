@@ -12,10 +12,10 @@ export default function EndSection() {
                 <h2>“We’re looking forward to celebrate with you”</h2>
             </div>
             <div className="end__image-wrapper">
-                <img src={branchSrc} alt="" className="no-pointer-event" />
+                <img loading="lazy" src={branchSrc} alt="" className="no-pointer-event" />
                 <div className="end__image-wrapper_container">
-                    <img src={JJ01Src} alt="" className="no-pointer-event" />
-                    <img src={JJ02Src} alt="" className="no-pointer-event" />
+                    <img loading="lazy" src={JJ01Src} alt="" className="no-pointer-event" />
+                    <img loading="lazy" src={JJ02Src} alt="" className="no-pointer-event" />
                 </div>
             </div>
         </section>

@@ -133,7 +133,7 @@ export default function FormMultiInput(props) {
                     type="button"
                     onClick={handleAddButtonClick}
                 >
-                    <img src={PlusIcon} />
+                    <img loading="lazy" src={PlusIcon} />
                     <span>{addButtonText}</span>
                 </button>
             </fieldset>
