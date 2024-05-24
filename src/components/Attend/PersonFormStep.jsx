@@ -175,7 +175,7 @@ export default function PersonFormStep() {
         <>
             {showVippsModal &&
                 <div 
-                    className="attend-form__modal attend-form__modal-vipps"
+                    className="attend-form__modal attend-form__modal-vipps fade-in-container"
                     onClick={e => setShowVippsModal(false)}
                 >
                     <img src={QrCodeVipps} alt="qr-code for vipps" />
@@ -184,7 +184,7 @@ export default function PersonFormStep() {
             }
             {showTwintModal &&
                 <div 
-                    className="attend-form__modal attend-form__modal-twint"
+                    className="attend-form__modal attend-form__modal-twint fade-in-container"
                 >
                     <div className="attend-form__modal-twint--instructions">
                         <div className="attend-form__modal-twint--instructions-text">
@@ -340,14 +340,12 @@ export default function PersonFormStep() {
                 <img src={GiftImage} alt="" />
 
                 <p style={_userAttendance ? {} : {display: 'none'}}>
-                    Your presence at our wedding party is gift enough!
-                    But if you wish to give something, a contribution to
-                    our future would mean a lot to us.
+                    Your presence at our wedding party is gift enough! However, if you wish to give something, a contribution to our future would mean a lot to us.
                 </p>
                 <p style={_userAttendance == false ? {} : {display: 'none'}}>
                 We’re sad you can’t make it.<br />
-                If you wish to give us something,<br />
-                a contribution to our savings would mean a lot to us.
+                If you wish to give something,<br />
+                a contribution to our future would mean a lot to us.
                 </p>
 
                 <p>You could use one of the following services</p>
@@ -379,7 +377,7 @@ export default function PersonFormStep() {
                         <span>TWINT</span>
                     </button>
                 </div>
-                <p>or <a href="#footer-contact">contact us</a> if you want to contribute in some other way</p>
+                <p>or <a href="#footer-contact">contact us</a> if you want to contribute in some other transfer method</p>
             </div>
             <div 
                 className="done done__container"
