@@ -82,10 +82,14 @@ export default function FormNavbar() {
             programItem: _programItem,
             programTimePreference: _programTimePreference
         }
-        if(_userAttendance == false) data = {
-            name: _userName,
-            email: _userEmail,
-            attending: _userAttendance
+        if(_userAttendance == false) {
+            data = {
+                name: _userName,
+                email: _userEmail,
+                attending: _userAttendance
+            }
+        }else if(_userHasCrew == false){
+            data.group = []
         }
         try {
             // Check if the user already exists
@@ -240,7 +244,10 @@ export default function FormNavbar() {
                 {filteredMenuButtons.map(button => (
                     <li 
                         key={button.text} 
-                        className={`attend-form-menu__button-wrapper ${_activeFormStep == button.text ? 'active' : '' }`}
+                        className={`
+                            attend-form-menu__button-wrapper ${_activeFormStep == button.text ? 'active' : '' }
+                            ${showOrHide(button.text) ? 'fade-in-container' : ''}
+                        `}
                         style={showOrHide(button.text) ? {} : {visibility: 'hidden'}}
                     >
                         <button 

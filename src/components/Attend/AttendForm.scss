@@ -30,7 +30,117 @@
     @include mobile-small() {
         padding: 1.1rem;
     }
-    
+
+    &__modal {
+
+        position: fixed;
+        width: calc(100vw + 10px);
+        height: 100vh !important;
+        background: rgba(16, 16, 16, 0.53);
+        inset: 0;
+        z-index: 999;
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        
+        button {
+            height: 3rem;
+            background: var(--text-dark);
+            border: none;
+            cursor: pointer;
+        }
+        
+        &-twint {
+
+            &--instructions {
+
+                background-image: url(../../assets/twint-background.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                width: 270px;
+                height: 270px;
+                min-width: 270px;
+                display: flex;
+                
+                &-text {
+                    background: #0000007a;
+                    color: var(--white);
+                    display: block;
+                    margin-top: auto;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 2;
+                    backdrop-filter: blur(10px);
+                    
+                    ol {
+                        padding: 0 1.7rem;
+                    }
+
+                    li > span {
+                        padding: 0.35rem;
+                        border-radius: 7px;
+                        margin-left: 0.5rem;
+                        opacity: 0.9;
+                        font-weight: 600;
+                        color: var(--text-dark);
+                        background: #fff;
+                        position: relative;
+                        cursor: copy;
+
+
+                        &.show-copied-message::after {
+                            content: "copied number";
+                            position: absolute;
+                            background: var(--deep-green);
+                            color: #fff;
+                            font-size: 12px;
+                            font-weight: 300;
+                            display: block;
+                            padding: 0.15rem;
+                            padding-right: 0.6rem;
+                            padding-left: 0.3rem;
+                            z-index: -1;
+                            top: -1.4px;
+                            left: -5.2rem;
+                            text-wrap: nowrap;
+                            animation: moveAndWait 3s forwards;
+                        }
+                    }
+                    @keyframes moveAndWait {
+                        0% {
+                            left: 0;
+                        }
+
+                        10% {
+                            left: -82%;
+                        }
+
+                        50% {
+                            left: -82%;
+                        }
+
+                        60% {
+                            left: 0;
+                        }
+
+                        100% {
+                            left: 0;
+                        }
+                    }
+                }
+            }
+
+            &--backdrop {
+                background: rgba(255, 0, 0, 0);
+                width: 100vw;
+                height: 100vh;
+                position: fixed;
+                z-index: -1;
+
+            }
+        }
+    }
+        
     &__content {
         display: grid;
         grid-row: 1 / -1;

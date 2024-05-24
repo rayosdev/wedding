@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <footer className="footer">
             <div className="container">
-                <div className="footer__contact-info">
+                <div className="footer__contact-info" id="footer-contact">
                     <h2>Contact</h2>
                     <p>if you have questions you can contact</p>
                     <div className="where__text-content__contact-info content">

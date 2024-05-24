@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
+import anime from 'animejs'
 
 import RadioGroup from './components/RadioGroup'
 import './PersonFormStep.scss'
@@ -12,6 +13,8 @@ import GiftImage from '../../assets/gift-image.jpg'
 import LogoTwint from '../../assets/logo-twint.jpg'
 import LogoVipps from '../../assets/logo-vipps.jpg'
 import LogoPaypal from '../../assets/logo-paypal.jpg'
+
+import QrCodeVipps from '../../assets/qr-code.jpg'
 
 const radioGroupProps = {
     legendText: "Your attendance status",
@@ -60,6 +63,13 @@ export default function PersonFormStep() {
     const [showNameAndEmail, setShowNameAndEmail] = useState(false)
     const [showAloneOrGroup, setShowAloneOrGroup] = useState(false)
 
+    const [isMobileOrTablet, setIsMobileOrTablet] = useState(null)
+    const [showVippsModal, setShowVippsModal] = useState(false)
+    const [showTwintModal, setShowTwintModal] = useState(false)
+
+    const hasCrewRef = useRef(null)
+
+
     const {
         _userAttendance,
         _userName,
@@ -82,6 +92,11 @@ export default function PersonFormStep() {
         updateUserEmail,
         updateActiveFormStep,
     } = useStore()
+
+    useEffect(() => {
+        setIsMobileOrTablet(/Mobil|Tablet|iPad|iPhone|Android/i.test(navigator.userAgent))
+    }, [])
+    
 
     useEffect(() => {
 
@@ -120,27 +135,90 @@ export default function PersonFormStep() {
             document.querySelector(selector)?.focus()
         }, 100)
     }
-
+    
     useEffect(() => {
-        const isMobileOrTablet = /Mobi|Tablet|iPad|iPhone|Android/i.test(navigator.userAgent);
-
-        // if (isMobileOrTablet) {
-        //     alert('User is on a mobile or tablet device');
-        // } else {
-        //     alert('User is on a desktop device');
-        // }
-    }, [])
+        console.log("crew true", _userHasCrew)
+        if (_userHasCrew && ['you'].includes(_activeFormStep)){
+            anime({
+                targets: hasCrewRef.current,
+                translateY: [215, 0],
+                opacity: [0, 1],
+                duration: 400,
+                easing: 'easeInOutQuad',
+            })
+        } else if (_userHasCrew == false && ['group'].includes(_activeFormStep)) {
+            anime({
+                targets: hasCrewRef.current,
+                translateY: [-215, 0],
+                opacity: [0, 1],
+                duration: 400,
+                easing: 'easeInOutQuad',
+            })
+        }
+    }, [_userHasCrew])
+    
+    
+    useEffect(() => {
+        if(showVippsModal || showTwintModal){
+            document.body.style.overflow = 'hidden'
+            if(isMobileOrTablet == false) document.body.style.borderRight = 'solid 10px black'
+        } else {
+            document.body.style.overflow = 'auto'
+            if (isMobileOrTablet == false) document.body.style.borderRight = 'none'
+        }
+    }, [showVippsModal, showTwintModal])
     
 
+    
 
     return (
         <>
+            {showVippsModal &&
+                <div 
+                    className="attend-form__modal attend-form__modal-vipps"
+                    onClick={e => setShowVippsModal(false)}
+                >
+                    <img src={QrCodeVipps} alt="qr-code for vipps" />
+                    <button>Close</button>
+                </div>
+            }
+            {showTwintModal &&
+                <div 
+                    className="attend-form__modal attend-form__modal-twint"
+                >
+                    <div className="attend-form__modal-twint--instructions">
+                        <div className="attend-form__modal-twint--instructions-text">
+                            <ol>
+                                <li>Open TWINT app, select 'Send'</li>
+                                <li>
+                                    Select Jeannine or enter her mobile number:  
+                                    <span
+                                        onClick={e => {
+                                            e.preventDefault()
+                                            navigator.clipboard.writeText('+41 79 79 776 86').then(() => {
+                                                e.target.classList.add('show-copied-message')
+                                                setTimeout(() => e.target.classList.remove('show-copied-message'), 2000)
+                                            })
+                                        }}
+                                    >
+                                        +41 79 79 776 86
+                                    </span>
+                                </li>
+                                <li>Enter amount, add a message</li>
+                                <li>Press ‘Send’</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <button onClick={e => setShowTwintModal(false)}>Close</button>
+                    <div onClick={e => setShowTwintModal(false)} className="attend-form__modal-twint--backdrop"></div>
+                </div>
+            }
             <div 
                 className="attend-form--section-you" 
                 style={['you', null].includes(_activeFormStep) ? {} : {display: 'none'}}
             >
 
-                <div className="user-attend">
+                <div className="user-attend fade-in-container">
                     <RadioGroup 
                         {...radioGroupProps} 
                         handelChange={
@@ -153,7 +231,10 @@ export default function PersonFormStep() {
                         } 
                         />
                 </div>
-                <div className="person-info" style={_userAttendance != null ? {} : {visibility: 'hidden'}}>
+                <div 
+                    className={`person-info ${_userAttendance != null ? 'fade-in-container' : ''}`} 
+                    style={_userAttendance != null ? {} : {visibility: 'hidden'}}
+                >
                     <FormInput 
                         type="text" 
                         name="user:name" 
@@ -176,6 +257,7 @@ export default function PersonFormStep() {
                     ...(showAloneOrGroup ? {} : {visibility: 'hidden'}),
                     ...(['you', 'group'].includes(_activeFormStep) ? {} : {display: 'none'})
                 }}
+                ref={hasCrewRef}
             >
                 <RadioGroup 
                     {...radioGroupAloneOrGroup} 
@@ -270,20 +352,34 @@ export default function PersonFormStep() {
 
                 <p>You could use one of the following services</p>
                 <div className="gift__services">
-                    <a target="_blank" href="https://qr.vipps.no/28/2/01/031/4799229116?v=1">
-                        <img src={LogoVipps} alt="" />
-                        <span>Vipps</span>
-                    </a>
+                    {isMobileOrTablet ? 
+                        <a 
+                        target="_blank" 
+                        href="https://qr.vipps.no/28/2/01/031/4799229116?v=1"
+                        >
+                            <img src={LogoVipps} alt="" />
+                            <span>Vipps</span>
+                        </a>
+                        :
+                        <button
+                            onClick={_e => setShowVippsModal(true)}
+                        >
+                            <img src={LogoVipps} alt="" />
+                            <span>Vipps</span>
+                        </button>
+                    }
                     <a target="_blank" href="https://paypal.me/jaredisaksen?country.x=NO&locale.x=no_NO">
                         <img src={LogoPaypal} alt="" />
                         <span>PayPal</span>
                     </a>
-                    <a target="_blank" href="tel:+41 79 79 776 86">
+                    <button
+                        onClick={_e => setShowTwintModal(true)}
+                    >
                         <img src={LogoTwint} alt="" />
                         <span>TWINT</span>
-                    </a>
+                    </button>
                 </div>
-                <p>or contact us if you want to contribute in some other way</p>
+                <p>or <a href="#footer-contact">contact us</a> if you want to contribute in some other way</p>
             </div>
             <div 
                 className="done done__container"

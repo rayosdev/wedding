@@ -12,7 +12,7 @@ export default function FormInput(props) {
         : null
     
     return (
-        <div className='form-input'>
+        <div className="form-input fade-in-container">
             <label htmlFor={name}>{label}</label>
             <input
                 value={value}
