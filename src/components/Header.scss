@@ -7,6 +7,8 @@
     // aspect-ratio: 1 / 0.5;
     height: 95vh;
     max-height: 850px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
     
     
     @include desktop-up {
@@ -79,8 +81,17 @@
 
             & > span {
                 font-family: "Sedan SC", serif;
-            }
 
+                opacity: 0;
+                &:nth-child(1) {animation: 1s fadeIn 0.2s forwards;}
+                &:nth-child(2) {animation: 1s fadeIn 0.5s forwards;}
+                &:nth-child(4) {animation: 1s fadeIn 0.9s forwards;}
+            }
+            & hr {
+                opacity: 0;
+                animation: 1s fadeIn 0.7s forwards;
+            }
+            
             
             @include desktop-up {
                 margin-left: -7rem;

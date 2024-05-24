@@ -28,7 +28,6 @@ export default function When() {
     
     useEffect(() => {
     }, [countdownString])
-    
 
     return (
         <section className="when">

@@ -100,6 +100,7 @@ export default function FormMultiInput(props) {
                             {sideMenu && 
                                 
                                 <select
+                                    className="fade-in-container"
                                     ref={selectListRef}
                                     name={`${name}-time-${index}`}
                                     id={`${name}-time-${index}`}

@@ -6,6 +6,7 @@
     background: var(--deep-green);
     overflow-x: hidden;
     padding-bottom: 4rem;
+    position: relative;
 
     @include mobile-small {
         .container {

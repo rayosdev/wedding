@@ -10,6 +10,8 @@
     color: var(--text-dark);
     font-size: 1.25rem;
     padding-top: 20rem;
+    position: relative;
+    z-index: 1;
 
     @include mobile(){
         padding-top: 12rem;

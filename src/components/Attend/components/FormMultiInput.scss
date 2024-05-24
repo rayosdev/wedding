@@ -136,6 +136,8 @@
                     position: relative;
                     text-align: center;
                     justify-self: end;
+                    opacity: 0;
+                    animation: fadeIn 1s forwards;
                     
                     color: var(--text-dark);
                     appearance: none; // Remove the default arrow
@@ -241,7 +243,7 @@
     }
     
     &.side-menu.more-items &__remove-button {
-        right: -2.65rem;
+        right: -3.65rem;
         
         @media (max-width: 860px) {
             top: 2rem;

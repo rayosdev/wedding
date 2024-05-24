@@ -1,5 +1,6 @@
 import React from 'react'
 import './Where.scss'
+import useIntersectionObserver from '../hooks/useIntersectionObserver'
 
 import pappaSrc from '../assets/pappa-contact.jpg'
 import branchSrc from '../assets/decoration.svg'
@@ -9,8 +10,14 @@ import locationPinGreenSrc from '../assets/location-pin-green.svg'
 import locationPinWhiteSrc from '../assets/location-pin-white.svg'
 
 export default function Where() {
+
+
+    const observeElement = useIntersectionObserver(() => {
+        document.querySelector('header').style.visibility = 'hidden'
+    })
+
     return (
-        <section className="where">
+        <section className="where" ref={observeElement}>
             <div className="container">
                 <h2>Where?</h2>
                 <div className="where__text-content">
