@@ -6,6 +6,7 @@
     position: relative;
     padding-top: 1.25rem;
     margin-top: auto;
+    min-width: 300px;
 
     &::before {
         content: "";
@@ -103,6 +104,7 @@
 
             @media only screen and (max-width: 690px) {
                 grid-row: 2/3;
+                width: 85px;
             }
         }
         
@@ -127,6 +129,7 @@
             }
             @media only screen and (max-width: 690px) {
                 grid-column: 3/4;
+                // justify-self: end;
             }
         }
     }
@@ -165,6 +168,12 @@
                 width: 100%;
                 max-width: 40px;
                 min-width: 30px;
+            }
+        }
+        
+        & span {
+            @media only screen and (max-width: 690px) {
+                grid-row: 2/3;
             }
         }
     }

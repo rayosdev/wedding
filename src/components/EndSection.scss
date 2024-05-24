@@ -8,6 +8,10 @@
     padding-top: 8rem;
     display: flex;
     flex-direction: column;
+    
+    @include mobile(){
+        min-height: 470px;
+    }
 
     .container {
         h2 {

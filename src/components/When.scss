@@ -6,12 +6,16 @@
     display: grid;
     padding-top: 16rem;
     margin-top: -5px;
+    @media (max-width: 690px) {
+        min-height: 650px;
+        padding-top: 7rem;
+    }
 
     .container {
         text-align: center;
         margin-bottom: 20rem;
         @media (max-width: 690px) {
-            margin-bottom: 10rem;
+            margin-bottom: 7rem;
         }
 
         h2 {
@@ -73,14 +77,21 @@
         &_wrapper:nth-child(4) {
             display: none;
         }
-
+        
         &_wrapper {
             overflow: hidden;
             width: 100%;
             max-height: 500px;
             
+            @media (max-width: 520px) {
+                width: 140%;
+            }
+            
             img {
                 width: 100%;
+                @media (max-width: 520px) {
+                    margin-left: -10%;
+                }
             
             }
 

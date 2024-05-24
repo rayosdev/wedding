@@ -33,9 +33,7 @@ export default function FormMultiInput(props) {
         if(sideMenu){
             onChange([inputValues, timeValues])
         } else onChange(inputValues)
-        setTimeout(() => {
-            hostRef.current?.querySelector('li:last-child input[type=text]')?.focus()
-        }, 200)
+
     }, [inputValues])
     
 
@@ -54,6 +52,9 @@ export default function FormMultiInput(props) {
 
     const handleAddButtonClick = (_e) => {
         setInputValues([...inputValues, ''])
+        setTimeout(() => {
+            hostRef.current?.querySelector('li:last-child input[type=text]')?.focus()
+        }, 200)
     }
 
     const handelRemoveItem = (_e, index) => {

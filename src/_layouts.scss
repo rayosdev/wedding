@@ -1,13 +1,6 @@
 @import '_variables';
 
 
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  width: 90%;
-}
-
-
 // Media Queries Mixins
 @mixin mobile-small {
   @media (max-width: $breakpoint-mobile) {
@@ -99,4 +92,11 @@
   @media (min-width: $breakpoint-desktop) {
     @content;
   }
+}
+
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 90%;
 }

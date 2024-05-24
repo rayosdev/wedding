@@ -1,3 +1,4 @@
+@import '../layouts';
 .footer {
     width: 100%;
     min-height: 400px;
@@ -9,24 +10,31 @@
     .container {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+        
+        @include tablet(){
+            grid-template-columns: auto;
+            justify-content: center;
+        }
     }
     
     &__contact-info {
-
+        
         .content {
-
             display: grid;
             grid-auto-flow: column;
             column-gap: 4rem;
             
             @media only screen and (max-width: 690px) {
-                grid-auto-flow: row; 
+                grid-auto-flow: row;
             }
-
+            
             &__item-container {
                 // max-width: 295px;
                 margin-bottom: 1.5rem;
-
+                
+                @media only screen and (max-width: 690px) {
+                    margin-top: 1rem;
+                }
                 @media only screen and (max-width: 350px) {
                     font-size: 14px;
                 }
@@ -46,6 +54,9 @@
                 // max-width: 280px;
                 height: 30px;
                 grid-template-columns: 17px auto 1fr;
+                @include tablet(){
+                    margin: 0;
+                }
                 
                 svg {
                     justify-self: center;
@@ -55,6 +66,10 @@
 
                 p {
                     width: max-content;
+
+                    @include tablet(){
+                        margin: 0;
+                    }
                 }
                 
                 a {

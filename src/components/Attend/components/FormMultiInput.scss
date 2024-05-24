@@ -15,6 +15,7 @@
         color: var(--text-dark);
         max-width: 65%;
         @media only screen and (max-width: 690px) {
+            max-width: 80%;
             padding: 0.5rem 2rem;
         }
     }
@@ -24,6 +25,10 @@
         max-height: 200px;
         overflow-y: auto;
         scroll-behavior: smooth;
+
+        @media only screen and (max-width: 480px) {
+            max-height: 125px;
+        }
         
         &::-webkit-scrollbar {
             width: 8px;
@@ -199,6 +204,12 @@
         top: 4px;
         aspect-ratio: 1/1;
         
+        @media only screen and (max-width: 690px) {
+            padding: 0.7rem;
+            top: 7px;
+            right: 1rem;
+        }
+        
         &:focus {
             outline: solid color-mix(in srgb, var(--text-dark) 25%, white) 1px;
         }
@@ -236,9 +247,9 @@
             top: 2rem;
             right: -0.65rem;
         }
-
+        
     }
-
+    
     &__add-button {
         display: grid;
         justify-items: center;
@@ -246,18 +257,27 @@
         padding: 1rem;
         margin-left: auto;
         margin-right: 0.75rem;
-
+        
+        @media (max-width: 520px) {
+            padding: 0.3rem;
+            padding-right: 1rem;
+        }
+        
         &:focus {
             outline: solid color-mix(in srgb, var(--text-dark) 25%, white) 1px;
         }
-
+        
         &:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
-
+        
         img {
             padding-bottom: 0.5rem;
+            
+            @media (max-width: 520px) {
+                width: 15px;
+            }
         }
     }
 }

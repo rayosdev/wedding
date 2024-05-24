@@ -1,7 +1,15 @@
+@import '../layouts';
+
 .attend {
     width: 100%;
     min-height: 800px;
     background: var(--deep-green);
     overflow-x: hidden;
     padding-bottom: 4rem;
+
+    @include mobile-small {
+        .container {
+            width: 95%;
+        }
+    }
 }

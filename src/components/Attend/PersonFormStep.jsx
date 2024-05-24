@@ -121,6 +121,17 @@ export default function PersonFormStep() {
         }, 100)
     }
 
+    useEffect(() => {
+        const isMobileOrTablet = /Mobi|Tablet|iPad|iPhone|Android/i.test(navigator.userAgent);
+
+        // if (isMobileOrTablet) {
+        //     alert('User is on a mobile or tablet device');
+        // } else {
+        //     alert('User is on a desktop device');
+        // }
+    }, [])
+    
+
 
     return (
         <>
@@ -267,7 +278,7 @@ export default function PersonFormStep() {
                         <img src={LogoPaypal} alt="" />
                         <span>PayPal</span>
                     </a>
-                    <a target="_blank" href="twint://recipient=0797977686">
+                    <a target="_blank" href="tel:+41 79 79 776 86">
                         <img src={LogoTwint} alt="" />
                         <span>TWINT</span>
                     </a>

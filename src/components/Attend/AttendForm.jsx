@@ -83,7 +83,7 @@ export default function AttendForm() {
             }
             {(_activeFormStep == 'gift') &&
               <>
-                <h2>Wanna surprise us with a gift?</h2>
+                <h2 className="header-text--gift">Wanna surprise us with a gift?</h2>
               </> 
             }
             {(_activeFormStep == 'done') &&

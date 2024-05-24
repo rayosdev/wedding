@@ -11,6 +11,9 @@
         width: 90%;
         margin-bottom: 1.1rem;
     }
+    @media only screen and (max-width: 480px) {
+        grid-template-columns: min-content 10px minmax(200px, 100%);
+    }
     
     label {
         align-self: center;

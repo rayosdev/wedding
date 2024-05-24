@@ -174,7 +174,7 @@ export default function FormNavbar() {
     }
 
     const showOrHide = (type) => {
-        return true
+        // return true
         switch (type) {
             case 'you':
                 if(_userAttendance != null) return true
@@ -257,7 +257,7 @@ export default function FormNavbar() {
                 className="attend-form-menu__button--next"
                 style={showOrHide('next') ? {} : {visibility: 'hidden'}}
                 onClick={e => handelFormNavButtonClicked(e, 'next')}
-            >{['gift', 'done'].includes(_activeFormStep) == false ? "Next" : "Submit"} <img src={arrowPoint} /></button>
+            >{['gift', 'done'].includes(_activeFormStep) == false ? "Next" : "Done"} <img src={arrowPoint} /></button>
         </div>
     )
 }

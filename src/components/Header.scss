@@ -12,6 +12,9 @@
     @include desktop-up {
         max-height: 1080px;
     }
+    @include tablet {
+        height: 80vh;
+    }
     
     
     &__fixed-wrapper {
@@ -48,6 +51,11 @@
         @media (max-width: 570px) {
             background-size: 280%;
             background-position: 63% -2vw;
+        }
+        
+        @include mobile {
+            background-size: 320%;
+            background-position: 63% 0vw;    
         }
     }
 
