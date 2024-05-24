@@ -83,10 +83,18 @@
             justify-items: center;
             color: var(--text-dark);
             font-weight: 200;
-
-            @media (max-width: 690px) {
             
-                img {
+            &:hover img {
+                filter: grayscale(0%);
+            }
+
+            img {
+
+                filter: grayscale(100%);
+                transition: filter 0.2s ease-in-out;
+                
+
+                @media (max-width: 690px) {
                     width: 100%;
                     column-gap: 1rem;
                 }

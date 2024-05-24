@@ -17,6 +17,10 @@
     
     label {
         align-self: center;
+
+        &:focus-within {
+            outline: solid 1px black;
+        }
     }
     input {
         grid-column: 3/4;
