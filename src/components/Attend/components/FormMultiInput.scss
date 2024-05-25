@@ -25,6 +25,7 @@
         max-height: 200px;
         overflow-y: auto;
         scroll-behavior: smooth;
+        margin-bottom: 0;
 
         @media only screen and (max-width: 480px) {
             max-height: 125px;
@@ -138,6 +139,7 @@
                     justify-self: end;
                     opacity: 0;
                     animation: fadeIn 1s forwards;
+                    margin-bottom: 1.8rem;
                     
                     color: var(--text-dark);
                     appearance: none; // Remove the default arrow
@@ -151,6 +153,7 @@
                         text-align: start;
                         grid-row: 2/3;
                         width: 100%;
+                        margin-bottom: 0;
                     }
 
                     &::-ms-expand {

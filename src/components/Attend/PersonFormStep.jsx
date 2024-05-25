@@ -15,6 +15,8 @@ import LogoVipps from '../../assets/logo-vipps.jpg'
 import LogoPaypal from '../../assets/logo-paypal.jpg'
 
 import QrCodeVipps from '../../assets/qr-code.jpg'
+import PuertoRicanFlag from '../../assets/puerto-rico-flag.svg'
+import Checkbox from './components/Checkbox'
 
 const radioGroupProps = {
     legendText: "Your attendance status",
@@ -62,12 +64,15 @@ export default function PersonFormStep() {
 
     const [showNameAndEmail, setShowNameAndEmail] = useState(false)
     const [showAloneOrGroup, setShowAloneOrGroup] = useState(false)
-
+    
     const [isMobileOrTablet, setIsMobileOrTablet] = useState(null)
     const [showVippsModal, setShowVippsModal] = useState(false)
     const [showTwintModal, setShowTwintModal] = useState(false)
+    
+    const [showGiveGiftMethods, setShowGiveGiftMethods] = useState(false)
 
     const hasCrewRef = useRef(null)
+    const giftCheckboxRef = useRef(null)
 
 
     const {
@@ -81,12 +86,14 @@ export default function PersonFormStep() {
         _foodPreferenceAllergies,
         _programItem,
         _programTimePreference,
+        _giveGift,
         updateUserHasCrew,
         updateUserCrewList,
         updateBringFoodList,
         updateFoodPreferenceAllergies,
         updateProgramItem,
         updateProgramTimePreference,
+        updateGiveGift,
         updateUserAttendance,
         updateUserName,
         updateUserEmail,
@@ -97,7 +104,6 @@ export default function PersonFormStep() {
         setIsMobileOrTablet(/Mobil|Tablet|iPad|iPhone|Android/i.test(navigator.userAgent))
     }, [])
     
-
     useEffect(() => {
 
         if(_activeFormStep == 'you' && _userHasCrew){
@@ -129,15 +135,13 @@ export default function PersonFormStep() {
         if(type == 'name') updateUserName(e.target.value)
         if(type == 'email') updateUserEmail(e.target.value)
     }
-
     const setFocus = (selector) => {
         setTimeout(() => {
             document.querySelector(selector)?.focus()
         }, 100)
     }
-    
+
     useEffect(() => {
-        console.log("crew true", _userHasCrew)
         if (_userHasCrew && ['you'].includes(_activeFormStep)){
             anime({
                 targets: hasCrewRef.current,
@@ -156,12 +160,33 @@ export default function PersonFormStep() {
             })
         }
     }, [_userHasCrew])
-    
-    
+
+    // useEffect(() => {
+    //     if (_giveGift && ['gift'].includes(_activeFormStep)){
+    //         console.log("test")
+    //         anime({
+    //             targets: giftCheckboxRef.current,
+    //             translateY: [215, 0],
+    //             opacity: [0, 1],
+    //             duration: 400,
+    //             easing: 'easeInOutQuad',
+    //         })
+    //     } else if (_giveGift == false && ['gift'].includes(_activeFormStep)) {
+    //         anime({
+    //             targets: giftCheckboxRef.current,
+    //             translateY: [-215, 0],
+    //             opacity: [0, 1],
+    //             duration: 400,
+    //             easing: 'easeInOutQuad',
+    //         })
+    //     }
+    // }, [_giveGift])
+
+
     useEffect(() => {
         if(showVippsModal || showTwintModal){
             document.body.style.overflow = 'hidden'
-            if(isMobileOrTablet == false) {
+            if (isMobileOrTablet == false) {
                 document.body.style.borderRight = 'solid 10px black'
                 document.querySelector('header').style.visibility = 'hidden'
             }
@@ -173,14 +198,15 @@ export default function PersonFormStep() {
             }
         }
     }, [showVippsModal, showTwintModal])
-    
 
-    
+
+
+    // console.log(_activeFormStep)
 
     return (
         <>
             {showVippsModal &&
-                <div 
+                <div
                     className="attend-form__modal attend-form__modal-vipps fade-in-container"
                     onClick={e => setShowVippsModal(false)}
                 >
@@ -197,7 +223,7 @@ export default function PersonFormStep() {
                             <ol>
                                 <li>Open TWINT app, select 'Send'</li>
                                 <li>
-                                    Select Jeannine or enter her mobile number:  
+                                    Select Jeannine or enter her mobile number:
                                     <span
                                         onClick={e => {
                                             e.preventDefault()
@@ -228,18 +254,18 @@ export default function PersonFormStep() {
                     <RadioGroup 
                         {...radioGroupProps} 
                         handelChange={
-                            e => {e.target.value == 'attending:yes' ? 
-                                updateUserAttendance(true) : 
+                            e => {
+                                e.target.value == 'attending:yes' ?
+                                updateUserAttendance(true) :
                                 updateUserAttendance(false)
-                                
                                 setFocus('input[name="user:name"]')
                             }
                         } 
                         />
                 </div>
-                <div 
-                    className={`person-info ${_userAttendance != null ? 'fade-in-container' : ''}`} 
-                    style={_userAttendance != null ? {} : {visibility: 'hidden'}}
+                <div
+                    className={`person-info ${_userAttendance != null ? 'fade-in-container' : ''}`}
+                    style={_userAttendance != null ? {} : { visibility: 'hidden' }}
                 >
                     <FormInput 
                         type="text" 
@@ -283,7 +309,7 @@ export default function PersonFormStep() {
                     label=""
                     placeholder="persons name"
                     legendText="What are the names of the people you are bringing?"
-                    addButtonText="add person"
+                    addButtonText="add more"
                     onChange={e => updateUserCrewList(e)}
                 />
             </div>
@@ -297,10 +323,10 @@ export default function PersonFormStep() {
                     label=""
                     placeholder="food name"
                     legendText="I want to bring something"
-                    addButtonText="add food item"
+                    addButtonText="add more"
                     onChange={e => updateBringFoodList(e)}
                 />
-                <div 
+                <div
                     onClick={_e => document.querySelector('.attend-form--section-food').scrollTo({
                         top: 220,
                         behavior: 'smooth'
@@ -312,7 +338,7 @@ export default function PersonFormStep() {
                     label=""
                     placeholder="e.g: nuts, milk, vegetarian"
                     legendText="There are food allergies or preferences we should be aware of"
-                    addButtonText="add item"
+                    addButtonText="add more"
                     onChange={e => {
                         updateFoodPreferenceAllergies(e)
                         document.querySelector('.attend-form--section-food').scrollTo({
@@ -333,10 +359,10 @@ export default function PersonFormStep() {
                     label=""
                     placeholder="program item"
                     legendText="Yes, count me in!"
-                    addButtonText="add item"
+                    addButtonText="add more"
                     sideMenuPlaceholder="preferred time"
                     sideMenu={["no preference", 'at start', 'at middle', 'at end']}
-                    onChange={e => {updateProgramItem(e[0]); updateProgramTimePreference(e[1])}}
+                    onChange={e => { updateProgramItem(e[0]); updateProgramTimePreference(e[1]) }}
                 />
             </div>
             <div 
@@ -345,21 +371,40 @@ export default function PersonFormStep() {
             >
                 <img loading="lazy" src={GiftImage} alt="" />
 
-                <p style={_userAttendance ? {} : {display: 'none'}}>
-                    Your presence at our wedding party is gift enough! However, if you wish to give something, a contribution to our future would mean a lot to us.
-                </p>
-                <p style={_userAttendance == false ? {} : {display: 'none'}}>
-                We’re sad you can’t make it.<br />
-                If you wish to give something,<br />
-                a contribution to our future would mean a lot to us.
-                </p>
+                <div style={_giveGift == false ? {} : { display: 'none' }}>
+                    <p style={_userAttendance ? {} : {display: 'none'}}>
+                        Your presence at our wedding is gift enough!
+                        But if you wish to give something here’s what would
+                        mean the world to us:
+                    </p>
+                    <p style={_userAttendance == false ? {} : {display: 'none'}}>
+                        We’re sad you can’t make it.<br />
+                        If you wish to give us something,<br />
+                        a contribution to our savings would mean a lot to us.
+                    </p>
+                </div>
 
-                <p>You could use one of the following services</p>
+                <Checkbox 
+                    inputsName="is-attending"
+                    inputId="is-attending:yes"
+                    inputValue={_giveGift}
+                    labelFor="is-attending:yes"
+                    labelText="Yes I would like to contribute something"
+                    handelChange={e => updateGiveGift(!_giveGift)}
+                />
+                
+                <div style={_giveGift ? {} : { display: 'none' }} ref={giftCheckboxRef}>
+                    <p>
+                        Because of limited suitcase-space when traveling back to Switzerland we’d love it if instead of things you would chip in to help us finance our Honeymoon trip to Puerto&nbsp;Rico&nbsp;🌴&nbsp;<span>&nbsp;<img style={{ height: '1.1rem', transform: 'translateY(3px) translateX(3px)' }} src={PuertoRicanFlag} alt="puerto rican flag icon" /></span>
+                    </p>
+                    <p>Any contribution big or small, is most welcome </p>
+                    <p>You could use one of the following services</p>
+                
                 <div className="gift__services">
-                    {isMobileOrTablet ? 
-                        <a 
-                        target="_blank" 
-                        href="https://qr.vipps.no/28/2/01/031/4799229116?v=1"
+                    {isMobileOrTablet ?
+                        <a
+                            target="_blank"
+                            href="https://qr.vipps.no/28/2/01/031/4799229116?v=1"
                         >
                             <img loading="lazy" src={LogoVipps} alt="" />
                             <span>Vipps</span>
@@ -383,13 +428,14 @@ export default function PersonFormStep() {
                         <span>TWINT</span>
                     </button>
                 </div>
-                <p>or <a href="#footer-contact">contact us</a> if you want to contribute in some other transfer method</p>
+                    <p>or <a href="#footer-contact">contact us</a>  if you want to contribute in some other way</p>
+                </div>
             </div>
             <div 
                 className="done done__container"
                 style={['done'].includes(_activeFormStep) ? {} : {display: 'none'}}
             >
-                <img loading="lazy" src={GiftImage} alt="" />
+                <img src={GiftImage} alt="" />
 
                 <br/>
                 <p style={_userAttendance ? {} : {display: 'none'}}>

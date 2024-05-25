@@ -221,7 +221,7 @@ export default function FormNavbar() {
                     (_userHasCrew != null || _userAttendance == false)
                 ) return true
                 if(_activeFormStep == 'group' && _userCrewList[0] != '') return true
-                if(['food', 'program', 'gift'].includes(_activeFormStep)) return true
+                if(['food', 'program', 'gift', 'done'].includes(_activeFormStep)) return true
                 break;
         
             default:
@@ -264,7 +264,11 @@ export default function FormNavbar() {
                 className="attend-form-menu__button--next"
                 style={showOrHide('next') ? {} : {visibility: 'hidden'}}
                 onClick={e => handelFormNavButtonClicked(e, 'next')}
-            >{['gift', 'done'].includes(_activeFormStep) == false ? "Next" : "Done"} <img loading="lazy" src={arrowPoint} /></button>
+            >{
+                ['gift', 'done'].includes(_activeFormStep) == false ? "Next" : 
+                _activeFormStep == 'gift' ? "Send Inn" : <span>more info</span>
+            } <img loading="lazy" src={arrowPoint} />
+            </button>
         </div>
     )
 }

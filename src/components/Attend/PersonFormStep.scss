@@ -54,6 +54,17 @@
         margin: 1.5rem auto;
     }
 
+    .checkbox {
+        padding-bottom: 1rem;
+        display: grid;
+        justify-content: center;
+
+        span {
+            width: 20ch;
+            padding-bottom: 2rem;
+        }
+    }
+
     &__services {
         display: grid;
         grid-auto-flow: column;

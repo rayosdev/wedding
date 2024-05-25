@@ -1,0 +1,52 @@
+.checkbox {
+
+    label {
+
+
+        &>span {
+            background-image: url('../../../assets/radio-check-button.svg');
+            background-repeat: no-repeat;
+            background-position: center bottom;
+            cursor: pointer;
+            display: block;
+            padding-top: 1.5rem;
+            padding-bottom: 2.75rem;
+            text-align: center;
+            font-size: 1.1rem;
+            user-select: none;
+
+            @media (max-width: 520px) {
+                padding-top: 1rem;
+                padding-bottom: 1.75rem;
+                background-size: 35px;
+            }
+
+            &:hover {
+                opacity: 0.5;
+            }
+
+            &:active {
+                opacity: 1;
+            }
+        }
+    }
+
+    input[type=checkbox] {
+        clip: rect(0 0 0 0);
+        border: 0;
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    label input[type=checkbox]:checked+span {
+        background-image: url('../../../assets/radio-check-button-checked.svg');
+    }
+
+    &__error-message {
+        position: absolute;
+    }
+}
