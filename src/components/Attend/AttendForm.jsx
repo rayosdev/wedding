@@ -70,7 +70,7 @@ export default function AttendForm() {
             }
             {(_activeFormStep == 'food') && 
               <p>
-                We will have a Potluck (a buffet where guests bring foods) Would you like to contribute?
+                The food arrangements for the evening will be a type&nbsp;of Potluck <br /><i>(a buffet where people can bring some food to share).</i>
               </p>
             }
             {(_activeFormStep == 'program') &&

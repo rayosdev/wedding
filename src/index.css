@@ -55,7 +55,10 @@ h1,h2,h3,h4 {
   font-style: normal;
   margin: 0;
   margin-bottom: calc(2rem - (1rem * var(--site-line-height)));
+
 }
+
+
 
 a {
   font-weight: 500;
