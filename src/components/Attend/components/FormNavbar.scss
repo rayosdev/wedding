@@ -93,7 +93,7 @@
             width: fit-content;
             padding: 1rem;
             align-items: center;
-            min-width: 12ch;
+            min-width: 14ch;
             
             & > img {
                 width: 8.5px;
@@ -131,6 +131,19 @@
             @media only screen and (max-width: 690px) {
                 grid-column: 3/4;
                 // justify-self: end;
+            }
+
+            &.more-info {
+                padding-bottom: 3rem;
+                position: relative;
+                & > img {
+                    position: absolute;
+                    justify-self: center;
+                    align-self: end;
+                    padding-top: 0.5rem;
+                    bottom: 0.25rem;
+                    rotate: 90deg;
+                }
             }
         }
     }
@@ -176,6 +189,29 @@
             @media only screen and (max-width: 690px) {
                 grid-row: 2/3;
             }
+        }
+    }
+
+    .save-text {
+        &-container {
+            overflow: hidden;
+            width: max-content;
+            height: max-content;
+            margin: 0 auto;
+            margin-top: auto;
+            position: absolute;
+            top: -2.3rem;
+            justify-self: center;
+        }
+        &-content {
+            background: var(--text-dark);
+            max-width: 12ch;
+            margin: 0 auto;
+            color: #fff;
+            padding: 0.25rem 1.25rem;
+            position: relative;
+            bottom: -2rem;
+            text-align: center;
         }
     }
 }

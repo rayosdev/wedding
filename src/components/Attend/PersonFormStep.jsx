@@ -68,11 +68,10 @@ export default function PersonFormStep() {
     const [isMobileOrTablet, setIsMobileOrTablet] = useState(null)
     const [showVippsModal, setShowVippsModal] = useState(false)
     const [showTwintModal, setShowTwintModal] = useState(false)
-    
-    const [showGiveGiftMethods, setShowGiveGiftMethods] = useState(false)
 
     const hasCrewRef = useRef(null)
     const giftCheckboxRef = useRef(null)
+    const doneCoupleImageRef = useRef(null)
 
 
     const {
@@ -116,7 +115,6 @@ export default function PersonFormStep() {
     }, [_userHasCrew])
 
     useEffect(() => {
-
         if(
             (_userEmail != null && _userEmail != "") && 
             (_userName != null && _userName != "")
@@ -161,26 +159,25 @@ export default function PersonFormStep() {
         }
     }, [_userHasCrew])
 
-    // useEffect(() => {
-    //     if (_giveGift && ['gift'].includes(_activeFormStep)){
-    //         console.log("test")
-    //         anime({
-    //             targets: giftCheckboxRef.current,
-    //             translateY: [215, 0],
-    //             opacity: [0, 1],
-    //             duration: 400,
-    //             easing: 'easeInOutQuad',
-    //         })
-    //     } else if (_giveGift == false && ['gift'].includes(_activeFormStep)) {
-    //         anime({
-    //             targets: giftCheckboxRef.current,
-    //             translateY: [-215, 0],
-    //             opacity: [0, 1],
-    //             duration: 400,
-    //             easing: 'easeInOutQuad',
-    //         })
-    //     }
-    // }, [_giveGift])
+    useEffect(() => {
+        if (_giveGift && ['gift'].includes(_activeFormStep)){
+            anime({
+                targets: giftCheckboxRef.current,
+                translateY: [115, 0],
+                opacity: [0, 1],
+                duration: 400,
+                easing: 'easeInOutQuad',
+            })
+        } else if (_giveGift == false && ['gift'].includes(_activeFormStep)) {
+            anime({
+                targets: giftCheckboxRef.current,
+                translateY: [-115, 0],
+                opacity: [0, 1],
+                duration: 400,
+                easing: 'easeInOutQuad',
+            })
+        }
+    }, [_giveGift])
 
 
     useEffect(() => {
@@ -200,6 +197,17 @@ export default function PersonFormStep() {
     }, [showVippsModal, showTwintModal])
 
 
+    useEffect(() => {
+        if(_activeFormStep == 'done'){
+            anime({
+                targets: doneCoupleImageRef.current,
+                width: ['170px', '250px'],
+                duration: 400,
+                easing: 'easeInOutQuad',
+            })
+        }
+    }, [_activeFormStep])
+    
 
     // console.log(_activeFormStep)
 
@@ -284,7 +292,7 @@ export default function PersonFormStep() {
                 </div>
             </div>
             <div 
-                className="alone-or-group" 
+                className={`alone-or-group ${showAloneOrGroup ? "fade-in-container" : ''}`}
                 style={{
                     ...(showAloneOrGroup ? {} : {visibility: 'hidden'}),
                     ...(['you', 'group'].includes(_activeFormStep) ? {} : {display: 'none'})
@@ -371,7 +379,7 @@ export default function PersonFormStep() {
             >
                 <img loading="lazy" src={GiftImage} alt="" />
 
-                <div style={_giveGift == false ? {} : { display: 'none' }}>
+                <div style={_giveGift == false ? {} : { display: 'none' }} className="fade-in-container">
                     <p style={_userAttendance ? {} : {display: 'none'}}>
                         Your presence at our wedding is gift enough!
                         But if you wish to give something here’s what would
@@ -384,23 +392,28 @@ export default function PersonFormStep() {
                     </p>
                 </div>
 
-                <Checkbox 
-                    inputsName="is-attending"
-                    inputId="is-attending:yes"
-                    inputValue={_giveGift}
-                    labelFor="is-attending:yes"
-                    labelText="Yes I would like to contribute something"
-                    handelChange={e => updateGiveGift(!_giveGift)}
-                />
+                <div ref={giftCheckboxRef} className="fade-in-container">
+                    <Checkbox 
+                        inputsName="is-give-gift"
+                        inputId="is-give-gift:yes"
+                        inputValue={_giveGift}
+                        labelFor="is-give-gift:yes"
+                        labelText="Yes I would like to contribute something"
+                        handelChange={e => {
+                            console.log("_giveGift", _giveGift)
+                            updateGiveGift(!_giveGift)
+                        }}
+                    />
+                </div>
                 
-                <div style={_giveGift ? {} : { display: 'none' }} ref={giftCheckboxRef}>
+                <div style={_giveGift ? {} : { display: 'none' }} className="fade-in-container">
                     <p>
                         Because of limited suitcase-space when traveling back to Switzerland we’d love it if instead of things you would chip in to help us finance our Honeymoon trip to Puerto&nbsp;Rico&nbsp;🌴&nbsp;<span>&nbsp;<img style={{ height: '1.1rem', transform: 'translateY(3px) translateX(3px)' }} src={PuertoRicanFlag} alt="puerto rican flag icon" /></span>
                     </p>
                     <p>Any contribution big or small, is most welcome </p>
                     <p>You could use one of the following services</p>
                 
-                <div className="gift__services">
+                <div className="gift__services fade-in-container">
                     {isMobileOrTablet ?
                         <a
                             target="_blank"
@@ -428,30 +441,32 @@ export default function PersonFormStep() {
                         <span>TWINT</span>
                     </button>
                 </div>
-                    <p>or <a href="#footer-contact">contact us</a>  if you want to contribute in some other way</p>
+                    <p>or contact us if you want to contribute in some other way</p>
                 </div>
             </div>
             <div 
                 className="done done__container"
                 style={['done'].includes(_activeFormStep) ? {} : {display: 'none'}}
             >
-                <img src={GiftImage} alt="" />
+                <img ref={doneCoupleImageRef} src={GiftImage} alt="" />
 
                 <br/>
-                <p style={_userAttendance ? {} : {display: 'none'}}>
-                    We appreciate you taking time to fill this out and
-                    look forward to seeing you soon
-                    <br/>
-                    <br/><i>Kind Regards</i>
-                    <br/><i>Mr & Ms Isaksen</i>
-                </p>
-                <p style={_userAttendance == false ? {} : {display: 'none'}}>
-                    We appreciate you taking time to fill this out.
-                    Hope to see you soon.
-                    <br/>
-                    <br/><i>Kind Regards</i>
-                    <br/><i>Mr & Ms Isaksen</i>
-                </p>
+                <div className="fade-in-container">
+                    <p style={_userAttendance ? {} : {display: 'none'}}>
+                        We appreciate you taking time to fill this out and
+                        look forward to seeing you soon
+                        <br/>
+                        <br/><i>Kind Regards</i>
+                        <br/><i>Mr & Ms Isaksen</i>
+                    </p>
+                    <p style={_userAttendance == false ? {} : {display: 'none'}}>
+                        We appreciate you taking time to fill this out.
+                        Hope to see you soon.
+                        <br/>
+                        <br/><i>Kind Regards</i>
+                        <br/><i>Mr & Ms Isaksen</i>
+                    </p>
+                </div>
             </div>
         </>
     )

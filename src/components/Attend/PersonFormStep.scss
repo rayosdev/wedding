@@ -39,8 +39,7 @@
     & > img {
         border-radius: 50%;
         margin: 0 auto;
-        width: 250px;
-        margin-bottom: 1.25rem;
+        width: 170px;
         
         @media (max-width: 690px) {
             width: 150px;
@@ -51,7 +50,7 @@
 
     p {
         max-width: 45ch;
-        margin: 1.5rem auto;
+        margin: 1.25rem auto;
     }
 
     .checkbox {

@@ -6,6 +6,12 @@ export const EFormPath = {
     ME_AND_CREW: 'ME_AND_CREW', 
 }
 
+export const ESaveStatus = {
+    SAVED: 'SAVED', 
+    UPDATED: 'UPDATED', 
+    IDLE: 'IDLE',
+}
+
 export const useStore = create((set) => ({
 	_userAttendance: null,
 	updateUserAttendance: (v) => set({ _userAttendance: v }),
@@ -45,6 +51,9 @@ export const useStore = create((set) => ({
 
 	_userPathHistory: [],
 	updateUserPathHistory: (v) => set({ _userPathHistory: v }),
+
+	_saveStatus: ESaveStatus.IDLE,
+	updateSaveStatus: (v) => set({ _saveStatus: v }),
 
 	_countdownString: null,
 	updateCountdownString: (v) => set({ _countdownString: v }),

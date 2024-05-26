@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { addDoc, getDocs, query, where, updateDoc } from "firebase/firestore"
 import { firestore, collection } from '../../../../firebaseConfig'
+import anime from 'animejs'
 import './FormNavbar.scss'
 
 import formIconFood from '../../../assets/attend-form/food.svg'
@@ -11,7 +12,7 @@ import formIconGroup from '../../../assets/attend-form/group.svg'
 import formIcondone from '../../../assets/attend-form/done.svg'
 import arrowPoint from '../../../assets/arrow-point.svg'
 
-import { useStore, EFormPath } from '../../../store'
+import { useStore, EFormPath, ESaveStatus } from '../../../store'
 
 const menuButtons = [
     {
@@ -42,6 +43,8 @@ const menuButtons = [
 
 export default function FormNavbar() {
 
+    const saveTextRef = useRef(null)
+
     const {
         _activeFormStep,
         _userAttendance,
@@ -54,7 +57,9 @@ export default function FormNavbar() {
         _foodPreferenceAllergies,
         _programItem,
         _programTimePreference,
+        _giveGift,
         _userPathHistory,
+        _saveStatus,
         updateUserHasCrew,
         updateUserCrewList,
         updateBringFoodList,
@@ -65,7 +70,8 @@ export default function FormNavbar() {
         updateUserName,
         updateUserEmail,
         updateActiveFormStep,
-        updateUserPathHistory
+        updateUserPathHistory,
+        updateSaveStatus
     } = useStore()
 
     const [activeFormStep, setActiveFormStep] = useState(_activeFormStep)
@@ -80,13 +86,15 @@ export default function FormNavbar() {
             bringFood: _bringFoodList,
             preferenceAllergy: _foodPreferenceAllergies,
             programItem: _programItem,
-            programTimePreference: _programTimePreference
+            programTimePreference: _programTimePreference,
+            giftGive: _giveGift
         }
         if(_userAttendance == false) {
             data = {
                 name: _userName,
                 email: _userEmail,
-                attending: _userAttendance
+                attending: _userAttendance,
+                giftGive: _giveGift
             }
         }else if(_userHasCrew == false){
             data.group = []
@@ -101,17 +109,29 @@ export default function FormNavbar() {
                 // If no existing user, add a new document
                 const docRef = await addDoc(usersRef, data)
                 console.log("Document written with ID: ", docRef.id)
+                updateSaveStatus(ESaveStatus.SAVED)
             } else {
                 // If user exists, update the existing document
                 querySnapshot.forEach(async (doc) => {
+
                     await updateDoc(doc.ref, data)
                     console.log("Document updated with ID: ", doc.id)
                 })
+                updateSaveStatus(ESaveStatus.UPDATED)
             }
         } catch (e) {
             console.error("Error adding document: ", e)
         }
     }
+
+    useEffect(() => {
+        if(_saveStatus != ESaveStatus.IDLE){
+            setTimeout(() => {
+                updateSaveStatus(ESaveStatus.IDLE)
+            }, 4000)
+        }
+    }, [_saveStatus])
+    
 
     useEffect(() => {
 
@@ -123,6 +143,7 @@ export default function FormNavbar() {
     useEffect(() => {
 
         updateUserPathHistory([])
+
         
     
     }, [_userAttendance])
@@ -155,6 +176,19 @@ export default function FormNavbar() {
                 break;
         }
     }, [_formPath])
+
+    useEffect(() => {
+        if(_saveStatus != ESaveStatus.IDLE){
+            saveTextRef.current.innerText = ESaveStatus.SAVED ? 'Sign Up Saved' : 'Sign Up Updated'
+            anime({
+                targets: saveTextRef.current,
+                bottom: ['-2rem', '0', '0', '0', '0', '0', '0', '0', '-2rem'],
+                duration: 5000,
+                easing: 'easeOutQuad',
+            })
+        }
+    }, [_saveStatus])
+    
     
 
     const handelFormNavButtonClicked = (e, name) => {
@@ -232,9 +266,13 @@ export default function FormNavbar() {
 
 
     return (
+        <>
         <div className="attend-form-menu attend-form-menu__container"
             style={_activeFormStep != null ? {} : {display: 'none'}}
         >
+            <div className="save-text-container">
+                <div ref={saveTextRef} className="save-text-content">saved</div>
+            </div>
             <button 
                 className="attend-form-menu__button--past"
                 style={_activeFormStep == menuButtons[0].text ? {visibility: 'hidden'} : {}}
@@ -261,14 +299,24 @@ export default function FormNavbar() {
                 ))}
             </ul>
             <button 
-                className="attend-form-menu__button--next"
+                className={`attend-form-menu__button--next ${_activeFormStep == 'done' ? "more-info" : ''}`}
                 style={showOrHide('next') ? {} : {visibility: 'hidden'}}
-                onClick={e => handelFormNavButtonClicked(e, 'next')}
+                onClick={e => {
+                    if(_activeFormStep != 'done'){
+                        handelFormNavButtonClicked(e, 'next')
+                    }else{
+                        e.preventDefault()
+                        e.stopPropagation()
+                        const target = document.getElementById('when')
+                        target.scrollIntoView({ behavior: 'smooth' })
+                    }
+                }}
             >{
                 ['gift', 'done'].includes(_activeFormStep) == false ? "Next" : 
-                _activeFormStep == 'gift' ? "Send Inn" : <span>more info</span>
+                _activeFormStep == 'gift' ? "Send Inn" : "more info"
             } <img loading="lazy" src={arrowPoint} />
             </button>
         </div>
+        </>
     )
 }

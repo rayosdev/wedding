@@ -30,10 +30,10 @@ export default function When() {
     }, [countdownString])
 
     return (
-        <section className="when">
+        <section className="when" id="when">
             <div className="container">
                 <h2>When?</h2>
-                <p>August 3rd  at  15:00</p>
+                <p>August 3rd  at  15:00 - 20:00</p>
 
                 <h3 className="when__countdown">
                     {countdownString}

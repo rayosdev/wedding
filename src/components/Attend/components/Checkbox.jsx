@@ -14,20 +14,14 @@ export default function Checkbox(props) {
     const { labelText, labelFor, inputId, inputsName, inputValue, handelChange } = { ...defaultProps, ...props }
 
     return (
-        <div 
-            className="checkbox" key={inputId}
-            onClick={e => handelChange(e)}
-        >
+        <div className="checkbox" key={inputId}>
             <label htmlFor={labelFor}>
                 <input
                     id={inputId}
                     type="checkbox"
                     name={inputsName}
                     checked={inputValue}
-                    onChange={e =>{
-                        console.log(e.target.checked)
-                        handelChange(e) 
-                    }}
+                    onChange={e => handelChange(e)}
                 />
                 <span>{labelText}</span>
             </label>
