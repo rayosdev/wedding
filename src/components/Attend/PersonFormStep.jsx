@@ -381,7 +381,7 @@ export default function PersonFormStep() {
 
                 <div style={_giveGift == false ? {} : { display: 'none' }} className="fade-in-container">
                     <p style={_userAttendance ? {} : {display: 'none'}}>
-                        Your presence at our wedding is gift enough!
+                        Your presence at our wedding party is gift enough!
                         But if you wish to give something here’s what would
                         mean the world to us:
                     </p>
@@ -398,7 +398,7 @@ export default function PersonFormStep() {
                         inputId="is-give-gift:yes"
                         inputValue={_giveGift}
                         labelFor="is-give-gift:yes"
-                        labelText="Yes I would like to contribute something"
+                        labelText="I want to give a gift"
                         handelChange={e => {
                             console.log("_giveGift", _giveGift)
                             updateGiveGift(!_giveGift)

@@ -179,7 +179,7 @@ export default function FormNavbar() {
 
     useEffect(() => {
         if(_saveStatus != ESaveStatus.IDLE){
-            saveTextRef.current.innerText = ESaveStatus.SAVED ? 'Sign Up Saved' : 'Sign Up Updated'
+            saveTextRef.current.innerText = _saveStatus == ESaveStatus.SAVED ? 'Sign Up Saved' : 'Sign Up Updated'
             anime({
                 targets: saveTextRef.current,
                 bottom: ['-2rem', '0', '0', '0', '0', '0', '0', '0', '-2rem'],

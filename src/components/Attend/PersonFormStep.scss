@@ -33,7 +33,7 @@
     grid-row: 2 / 4;
     
     @include mobile() {
-        padding: 1rem;
+        padding: 0.5rem;
     }
 
     & > img {
@@ -51,10 +51,13 @@
     p {
         max-width: 45ch;
         margin: 1.25rem auto;
+        @include mobile() {
+            margin: 1rem auto;
+        }
     }
 
     .checkbox {
-        padding-bottom: 1rem;
+        // padding-bottom: 1rem;
         display: grid;
         justify-content: center;
 
