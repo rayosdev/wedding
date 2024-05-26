@@ -313,7 +313,7 @@ export default function FormNavbar() {
                 }}
             >{
                 ['gift', 'done'].includes(_activeFormStep) == false ? "Next" : 
-                _activeFormStep == 'gift' ? "Send Inn" : "more info"
+                _activeFormStep == 'gift' ? "Submit" : "more info"
             } <img loading="lazy" src={arrowPoint} />
             </button>
         </div>

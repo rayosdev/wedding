@@ -348,7 +348,7 @@ export default function PersonFormStep() {
                     addButtonText="add more"
                     onChange={e => updateBringFoodList(e)}
                 /> */}
-                <p>If you would like to bring some sort of food thing contact Jeanne Isaksen  </p>
+                <p>If you would like to bring some sort of food contact Jeanne Isaksen  </p>
                 <div className="content">
                     <div className="content__item item">
                         <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -432,8 +432,9 @@ export default function PersonFormStep() {
                     </p>
                     <p style={_userAttendance == false ? {} : {display: 'none'}}>
                         We’re sad you can’t make it.<br />
-                        If you wish to give us something,<br />
-                        a contribution to our savings would mean a lot to us.
+                        <br />
+                        If you wish to give something here’s is what would
+                        mean a lot to us:
                     </p>
                 </div>
 
