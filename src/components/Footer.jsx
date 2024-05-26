@@ -47,8 +47,8 @@ export default function Footer() {
                                         fill="#FFFFFF" />
                                 </svg>
                                 <p className="item__type">Email:</p>
-                                <a href="mailto:jeannine_schneider@hotmail.com?subject=Wedding%20questions">
-                                    jeannine_schneider@hotmail.com </a>
+                                <a href="mailto:jeannine.isaksen@gmail.com?subject=Wedding%20questions">
+                                    jeannine.isaksen@gmail.com </a>
                             </div>
                             <div className="content__item item">
                                 <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
