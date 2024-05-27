@@ -173,7 +173,7 @@
             padding: 0;
             // margin-top: -10px;
             // margin-bottom: 1rem;
-            width: 41ch;
+            width: 42ch;
             justify-self: center;
             font-size: 1.2rem;
             @media only screen and (max-width: 690px) {
@@ -220,10 +220,13 @@
     &--section-food {
         overflow-y: scroll;
         overflow-x: hidden;
-        height: 620px;
+        height: 580px;
         
+        @media (max-width: 690px) {
+            height: 490px;
+        }
         @media (max-width: 525px) {
-            height: auto;
+            height: 400px;
         }
         
         .form-multi-input {
@@ -347,6 +350,10 @@
 
         .form-multi-input {
             margin-top: 4rem;
+            
+            @media (max-width: 690px) {
+                margin-top: 0rem;
+            }
         }
 
         // &::-webkit-scrollbar {

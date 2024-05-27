@@ -207,7 +207,7 @@ export default function PersonFormStep() {
         if(_activeFormStep == 'done'){
             anime({
                 targets: doneCoupleImageRef.current,
-                width: [fromWidth, '250px'],
+                width: [fromWidth, isMobileOrTablet ? '170px' : '250px'],
                 duration: 400,
                 easing: 'easeInOutQuad',
             })
@@ -215,7 +215,7 @@ export default function PersonFormStep() {
         if (_userPathHistory.at(-1) == 'done'){
             anime({
                 targets: doneCoupleFirstImageRef.current,
-                width: ['250px', fromWidth],
+                width: [isMobileOrTablet ? '170px' : '250px', fromWidth],
                 duration: 400,
                 easing: 'easeInOutQuad',
             })
@@ -454,10 +454,10 @@ export default function PersonFormStep() {
                 
                 <div style={_giveGift ? {} : { display: 'none' }} className="fade-in-container">
                     <p>
-                        Because of limited suitcase-space when traveling back to Switzerland we’d love it if instead of things you would chip in to help us finance our Honeymoon trip to Puerto&nbsp;Rico&nbsp;🌴&nbsp;<span>&nbsp;<img style={{ height: '1.1rem', transform: 'translateY(3px) translateX(3px)' }} src={PuertoRicanFlag} alt="puerto rican flag icon" /></span>
+                        Because of limited suitcase-space when traveling back to Switzerland, instead of things, we’d love it if you would chip in to help us finance our Honeymoon trip to Puerto&nbsp;Rico.&nbsp;🌴&nbsp;<span>&nbsp;<img style={{ height: '1.1rem', transform: 'translateY(3px) translateX(3px)' }} src={PuertoRicanFlag} alt="puerto rican flag icon" /></span>
                     </p>
-                    <p>Any contribution big or small, is most welcome </p>
-                    <p>You could use one of the following services</p>
+                    <p>Any contribution big or small, is most welcome. </p>
+                    <p>You could use one of the following services:</p>
                 
                 <div className="gift__services fade-in-container">
                     {isMobileOrTablet ?
@@ -487,7 +487,6 @@ export default function PersonFormStep() {
                         <span>TWINT</span>
                     </button>
                 </div>
-                    <p>or contact us if you want to contribute in some other way</p>
                 </div>
             </div>
             <div 
@@ -506,10 +505,10 @@ export default function PersonFormStep() {
                         <br/><i>Mr. & Mrs. Isaksen</i>
                     </p>
                     <p style={_userAttendance == false ? {} : {display: 'none'}}>
-                        We appreciate you taking time to fill this out.
+                        We appreciate you taking time to fill this&nbsp;out.<br/>
                         Hope to see you soon.
                         <br/>
-                        <br/><i>Kind Regards</i>
+                        <br/><i>Kind Regards,</i>
                         <br/><i>Mr. & Mrs. Isaksen</i>
                     </p>
                 </div>
