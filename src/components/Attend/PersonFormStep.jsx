@@ -358,7 +358,7 @@ export default function PersonFormStep() {
                         </svg>
                         <p className="item__type">Email:</p>
                         <a href="mailto:ibdjwi@gmail.com?subject=Wedding%20food">
-                            ibdjwi@gmail.com@gmail.com </a>
+                            ibdjwi@gmail.com </a>
                     </div>
                     <div className="content__item item">
                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
