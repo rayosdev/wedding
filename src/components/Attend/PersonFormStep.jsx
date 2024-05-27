@@ -438,7 +438,7 @@ export default function PersonFormStep() {
                     </p>
                 </div>
 
-                <div ref={giftCheckboxRef} className="is-give-gift fade-in-container">
+                <div ref={giftCheckboxRef} className="fade-in-container">
                     <Checkbox 
                         inputsName="is-give-gift"
                         inputId="is-give-gift:yes"
@@ -451,41 +451,41 @@ export default function PersonFormStep() {
                     />
                 </div>
                 
-                <div style={_giveGift ? {} : { display: 'none' }} className="fade-in-container">
+                <div style={_giveGift ? {} : { display: 'none' }} className="checked-content fade-in-container">
                     <p>
                         Because of limited suitcase-space when traveling back to Switzerland, instead of things, we’d love it if you would chip in to help us finance our Honeymoon trip to Puerto&nbsp;Rico.&nbsp;🌴&nbsp;<span>&nbsp;<img style={{ height: '1.1rem', transform: 'translateY(3px) translateX(3px)' }} src={PuertoRicanFlag} alt="puerto rican flag icon" /></span>
                     </p>
-                    <p>Any contribution big or small, is most welcome. </p>
                     <p>You could use one of the following services:</p>
                 
-                <div className="gift__services fade-in-container">
-                    {isMobileOrTablet ?
-                        <a
-                            target="_blank"
-                            href="https://qr.vipps.no/28/2/01/031/4799229116?v=1"
-                        >
-                            <img loading="lazy" src={LogoVipps} alt="" />
-                            <span>Vipps</span>
+                    <div className="gift__services fade-in-container">
+                        {isMobileOrTablet ?
+                            <a
+                                target="_blank"
+                                href="https://qr.vipps.no/28/2/01/031/4799229116?v=1"
+                            >
+                                <img loading="lazy" src={LogoVipps} alt="" />
+                                <span>Vipps</span>
+                            </a>
+                            :
+                            <button
+                                onClick={_e => setShowVippsModal(true)}
+                            >
+                                <img loading="lazy" src={LogoVipps} alt="" />
+                                <span>Vipps</span>
+                            </button>
+                        }
+                        <a target="_blank" href="https://paypal.me/jaredisaksen?country.x=NO&locale.x=no_NO">
+                            <img loading="lazy" src={LogoPaypal} alt="" />
+                            <span>PayPal</span>
                         </a>
-                        :
                         <button
-                            onClick={_e => setShowVippsModal(true)}
+                            onClick={_e => setShowTwintModal(true)}
                         >
-                            <img loading="lazy" src={LogoVipps} alt="" />
-                            <span>Vipps</span>
+                            <img loading="lazy" src={LogoTwint} alt="" />
+                            <span>TWINT</span>
                         </button>
-                    }
-                    <a target="_blank" href="https://paypal.me/jaredisaksen?country.x=NO&locale.x=no_NO">
-                        <img loading="lazy" src={LogoPaypal} alt="" />
-                        <span>PayPal</span>
-                    </a>
-                    <button
-                        onClick={_e => setShowTwintModal(true)}
-                    >
-                        <img loading="lazy" src={LogoTwint} alt="" />
-                        <span>TWINT</span>
-                    </button>
-                </div>
+                    </div>
+                    <p style={{marginBottom: '0'}}>Any contribution big or small, is most welcome. </p>
                 </div>
             </div>
             <div 

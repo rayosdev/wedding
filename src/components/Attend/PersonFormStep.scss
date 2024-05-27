@@ -69,6 +69,14 @@
         }
     }
 
+    .checked-content {
+        p {
+            @include mobile () {
+                font-size: 1.1rem;
+            }
+        }
+    }
+
     &__services {
         display: grid;
         grid-auto-flow: column;
@@ -102,6 +110,7 @@
             justify-items: center;
             color: var(--text-dark);
             font-weight: 200;
+            text-decoration: underline;
             
             &:hover img {
                 filter: grayscale(0%);
@@ -112,6 +121,7 @@
                 filter: grayscale(100%);
                 transition: filter 0.2s ease-in-out;
                 width: 100%;
+                align-self: center;
                 
 
                 @media (max-width: 690px) {
