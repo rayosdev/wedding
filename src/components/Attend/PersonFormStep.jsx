@@ -438,15 +438,14 @@ export default function PersonFormStep() {
                     </p>
                 </div>
 
-                <div ref={giftCheckboxRef} className="fade-in-container">
+                <div ref={giftCheckboxRef} className="is-give-gift fade-in-container">
                     <Checkbox 
                         inputsName="is-give-gift"
                         inputId="is-give-gift:yes"
                         inputValue={_giveGift}
                         labelFor="is-give-gift:yes"
-                        labelText="I want to give a gift"
+                        labelText="Click box for further&nbsp;details"
                         handelChange={e => {
-                            console.log("_giveGift", _giveGift)
                             updateGiveGift(!_giveGift)
                         }}
                     />

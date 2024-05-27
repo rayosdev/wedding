@@ -87,14 +87,16 @@ export default function FormNavbar() {
             preferenceAllergy: _foodPreferenceAllergies,
             programItem: _programItem,
             programTimePreference: _programTimePreference,
-            giftGive: _giveGift
+            giftGive: _giveGift,
+            updateDate: new Date()
         }
         if(_userAttendance == false) {
             data = {
                 name: _userName,
                 email: _userEmail,
                 attending: _userAttendance,
-                giftGive: _giveGift
+                giftGive: _giveGift,
+                updateDate: new Date()
             }
         }else if(_userHasCrew == false){
             data.group = []
