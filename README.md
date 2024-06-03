@@ -1,6 +1,6 @@
 # Jared & Jeannine Wedding
 
-
+## [Netlify Build](https://jared-and-jeannine.netlify.app/)
 
 Currently, two official plugins are available:
 
