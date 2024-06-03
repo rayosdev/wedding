@@ -2,6 +2,7 @@
 
 ## Netlify build
 ### [https://jared-and-jeannine.netlify.app/](https://jared-and-jeannine.netlify.app/)
+![alt text](image.png)
 
 ##
 
