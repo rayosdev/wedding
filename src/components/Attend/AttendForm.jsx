@@ -2,8 +2,6 @@ import React, { useEffect, useRef } from 'react'
 import './AttendForm.scss'
 import PersonFormStep from './PersonFormStep' 
 
-import decorationRightSVG from '../../assets/decoration-green--right.svg'
-import decorationLeftSVG from '../../assets/decoration-green--left.svg'
 import FormNavbar from './components/FormNavbar'
 import { EFormPath, useStore } from '../../store'
 
@@ -18,6 +16,8 @@ export default function AttendForm() {
     _activeFormStep,
     _formPath,
     _userHasCrew,
+    _giftShowFromNav,
+    updateGiftShowFromNav,
     updateFormPath
   } = useStore()
 
@@ -54,13 +54,13 @@ export default function AttendForm() {
       })}>
         <form className="attend-form" onSubmit={handelSubmit} ref={formRef}>
           <div className="attend-form__content">
-            {_activeFormStep == 'you' && 
+            {(_activeFormStep == 'you' && _giftShowFromNav == false) && 
               <h2>Will you attend?</h2>
             }
             {_activeFormStep == 'group' && 
               <h2>Yes, I’m attending</h2>
             }
-            {(_activeFormStep == 'you' || _activeFormStep == 'group') && 
+            {((_activeFormStep == 'you' || _activeFormStep == 'group') && _giftShowFromNav == false) && 
               <p>
                 We have limited space, so please let us know by signing up before June 15<sup>th</sup> so we can plan accordingly
               </p>
@@ -81,7 +81,7 @@ export default function AttendForm() {
                 </p>
               </> 
             }
-            {(_activeFormStep == 'gift') &&
+            {(_activeFormStep == 'gift' || _giftShowFromNav) &&
               <>
                 <h2 className="header-text--gift">Wanna surprise us with a gift?</h2>
               </> 
@@ -95,8 +95,6 @@ export default function AttendForm() {
             <FormNavbar />
           </div>
         </form>
-        <img loading="lazy" src={decorationLeftSVG} alt="" className="attend-form__branch--left no-pointer-event"/>
-        <img loading="lazy" src={decorationRightSVG} alt="" className="attend-form__branch--right no-pointer-event"/>
       </div>
     </>
   )

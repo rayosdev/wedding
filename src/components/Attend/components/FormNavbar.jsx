@@ -13,6 +13,7 @@ import formIcondone from '../../../assets/attend-form/done.svg'
 import arrowPoint from '../../../assets/arrow-point.svg'
 
 import { useStore, EFormPath, ESaveStatus } from '../../../store'
+import Checkbox from './Checkbox'
 
 const menuButtons = [
     {
@@ -60,6 +61,8 @@ export default function FormNavbar() {
         _giveGift,
         _userPathHistory,
         _saveStatus,
+        _giftShowFromNav,
+        updateGiftShowFromNav,
         updateUserHasCrew,
         updateUserCrewList,
         updateBringFoodList,
@@ -270,7 +273,7 @@ export default function FormNavbar() {
     return (
         <>
         <div className="attend-form-menu attend-form-menu__container"
-            style={_activeFormStep != null ? {} : {display: 'none'}}
+            style={(_activeFormStep != null && _giftShowFromNav == false) ? {} : {display: 'none'}}
         >
             <div className="save-text-container">
                 <div ref={saveTextRef} className="save-text-content">saved</div>
@@ -318,6 +321,14 @@ export default function FormNavbar() {
                 _activeFormStep == 'gift' ? "Submit" : "more info"
             } <img loading="lazy" src={arrowPoint} />
             </button>
+        </div>
+        <div className="attend-form-gift-back" style={ _giftShowFromNav ? {} : {display: 'none'}}>
+            <p>If you haven't yet let us know whether you are attending or not, please  
+                <a href="" onClick={e => {
+                    e.preventDefault()
+                    updateGiftShowFromNav(false)
+                }}> click here</a>
+            </p>
         </div>
         </>
     )

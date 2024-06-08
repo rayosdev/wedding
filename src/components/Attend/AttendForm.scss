@@ -194,29 +194,6 @@
         position: relative;
     }
     
-    &__branch {
-        
-        
-        &--right,
-        &--left {
-            position: absolute;
-            // rotate: 10deg;
-            z-index: 0;
-            display: inline;
-            transform: translateX(50%) translateY(50%);
-            top: 0;
-        }
-        
-        
-        &--right {
-            left: 40%;
-            top: 15%;
-        }
-        &--left {
-            left: -25%;
-        }
-    }
-    
     &--section-food {
         overflow-y: scroll;
         overflow-x: hidden;

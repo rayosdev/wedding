@@ -88,6 +88,8 @@ export default function PersonFormStep() {
         _programTimePreference,
         _giveGift,
         _userPathHistory,
+        _giftShowFromNav,
+        updateGiftShowFromNav,
         updateUserHasCrew,
         updateUserCrewList,
         updateBringFoodList,
@@ -104,7 +106,7 @@ export default function PersonFormStep() {
     useEffect(() => {
         setIsMobileOrTablet(/Mobil|Tablet|iPad|iPhone|Android/i.test(navigator.userAgent))
     }, [])
-    
+
     useEffect(() => {
 
         if(_activeFormStep == 'you' && _userHasCrew){
@@ -117,6 +119,8 @@ export default function PersonFormStep() {
     }, [_userHasCrew])
 
     useEffect(() => {
+        console.log("_giftShowFromNav: ", (_userEmail != null && _userEmail != "") && (_userName != null && _userName != ""))
+        console.log("show: ", showAloneOrGroup)
         if(
             (_userEmail != null && _userEmail != "") && 
             (_userName != null && _userName != "")
@@ -128,7 +132,7 @@ export default function PersonFormStep() {
             }
         }
     
-    }, [_userName, _userEmail, _userAttendance])
+    }, [_userName, _userEmail, _userAttendance, _giftShowFromNav])
     
     
     const handelUserInfo = (e, type) => {
@@ -269,7 +273,7 @@ export default function PersonFormStep() {
             }
             <div 
                 className="attend-form--section-you" 
-                style={['you', null].includes(_activeFormStep) ? {} : {display: 'none'}}
+                style={(['you', null].includes(_activeFormStep) && _giftShowFromNav == false) ? {} : {display: 'none'}}
             >
 
                 <div className="user-attend fade-in-container">
@@ -309,7 +313,7 @@ export default function PersonFormStep() {
                 className={`alone-or-group ${showAloneOrGroup ? "fade-in-container" : ''}`}
                 style={{
                     ...(showAloneOrGroup ? {} : {visibility: 'hidden'}),
-                    ...(['you', 'group'].includes(_activeFormStep) ? {} : {display: 'none'})
+                    ...((['you', 'group'].includes(_activeFormStep) && _giftShowFromNav == false) ? {} : {display: 'none'})
                 }}
                 ref={hasCrewRef}
             >
@@ -420,7 +424,7 @@ export default function PersonFormStep() {
             </div>
             <div 
                 className="gift gift__container"
-                style={['gift'].includes(_activeFormStep) ? {} : {display: 'none'}}
+                style={(['gift'].includes(_activeFormStep) || _giftShowFromNav) ? {} : {display: 'none'}}
             >
                 <img ref={doneCoupleFirstImageRef} id="gift-couple-image" loading="lazy" src={GiftImage} alt="" />
 
@@ -438,7 +442,7 @@ export default function PersonFormStep() {
                     </p>
                 </div>
 
-                <div ref={giftCheckboxRef} className="fade-in-container">
+                <div ref={giftCheckboxRef} style={_giftShowFromNav == false ? {} : {display: 'none'}} className="fade-in-container">
                     <Checkbox 
                         inputsName="is-give-gift"
                         inputId="is-give-gift:yes"
@@ -451,7 +455,7 @@ export default function PersonFormStep() {
                     />
                 </div>
                 
-                <div style={_giveGift ? {} : { display: 'none' }} className="checked-content fade-in-container">
+                <div style={(_giveGift || _giftShowFromNav) ? {} : { display: 'none' }} className="checked-content fade-in-container">
                     <p>
                         Because of limited suitcase-space when traveling back to Switzerland, instead of things, we’d love it if you would chip in to help us finance our Honeymoon trip to Puerto&nbsp;Rico.&nbsp;🌴&nbsp;<span>&nbsp;<img style={{ height: '1.1rem', transform: 'translateY(3px) translateX(3px)' }} src={PuertoRicanFlag} alt="puerto rican flag icon" /></span>
                     </p>

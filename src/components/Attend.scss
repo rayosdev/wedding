@@ -4,13 +4,61 @@
     width: 100%;
     min-height: 800px;
     background: var(--deep-green);
-    overflow-x: hidden;
     padding-bottom: 4rem;
     position: relative;
 
     @include mobile-small {
         .container {
             width: 95%;
+        }
+    }
+
+    .nav-section {
+        position: absolute;
+        top: -2.75rem;
+        width: 100%;
+        display: grid;
+        justify-content: center;
+
+        ul {
+            display: grid;
+            grid-auto-flow: column;
+            justify-content: space-between;
+            column-gap: 1rem;
+            
+            li {
+                
+                a {
+                    background: var(--deep-green);
+                    color: #fff;
+                    padding: 0.5rem 0.8rem;
+                    border-radius: 5px 5px 0 0;
+                }
+
+            }
+        }
+    }
+
+    .decoration-container {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        justify-content: center;
+        grid-auto-flow: column;
+        grid-template-columns: auto 200px minmax(300px, 800px) 200px auto;
+        align-content: center;
+        overflow: hidden;
+    }
+
+    &__branch {
+
+        &--right {
+            grid-column: 2/3;
+            justify-self: center;
+        }
+        &--left {
+            justify-self: center;
+            grid-column: 4/5;
         }
     }
 }

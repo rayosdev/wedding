@@ -58,6 +58,9 @@ export const useStore = create((set) => ({
 	_countdownString: null,
 	updateCountdownString: (v) => set({ _countdownString: v }),
 
+	_giftShowFromNav: false,
+	updateGiftShowFromNav: (v) => set({ _giftShowFromNav: v }),
+
 	bears: 0,
 	increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
 	removeAllBears: () => set({ bears: 0 }),
