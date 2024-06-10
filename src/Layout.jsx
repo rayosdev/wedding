@@ -14,9 +14,9 @@ function Layout(props) {
     <>
       <Header />
       <Attend />
-      <When />
+      {/* <When />
       <Where />
-      <EndSection />
+      <EndSection /> */}
       <Footer />
     </>
   )
