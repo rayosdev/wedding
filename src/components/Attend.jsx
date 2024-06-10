@@ -50,7 +50,7 @@ export default function Attend() {
         </ul>
       </nav>
       <div className="container">
-        <AttendForm />
+        {/* <AttendForm /> */}
       </div>
       <div className="decoration-container">
         <img loading="lazy" src={decorationLeftSVG} alt="" className="attend__branch--left no-pointer-event"/>
