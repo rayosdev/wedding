@@ -25,7 +25,7 @@ export default function Attend() {
 
   return (
     <section className="attend" ref={observeElement}>
-      <nav className="nav-section">
+      {/* <nav className="nav-section">
         <ul>
           <li><a href='' onClick={e => { e.preventDefault()
             document.querySelector("#root > section.attend > div.container > div > form")
@@ -48,7 +48,7 @@ export default function Attend() {
               .scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})
           }}>Where</a></li>
         </ul>
-      </nav>
+      </nav> */}
       <div className="container">
         {/* <AttendForm /> */}
       </div>
